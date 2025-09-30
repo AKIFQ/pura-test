@@ -11,7 +11,7 @@ export const theme = {
       400: '#CCCCCC',
     },
     text: {
-      primary: '#191A23',
+      primary: '#1e3a8a',
       secondary: '#6B6B6B',
       light: '#FFFFFF'
     },
@@ -21,40 +21,40 @@ export const theme = {
     h1: {
       fontSize: '48px',
       lineHeight: '56px',
-      fontWeight: 700,
+      fontWeight: 300,
       fontFamily: "'Plus Jakarta Sans', sans-serif",
       letterSpacing: '-0.02em',
     },
     h2: {
       fontSize: '36px',
       lineHeight: '44px',
-      fontWeight: 700,
+      fontWeight: 200,
       fontFamily: "'Plus Jakarta Sans', sans-serif",
       letterSpacing: '-0.01em',
     },
     h3: {
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 600,
+      fontWeight: 200,
       fontFamily: "'Plus Jakarta Sans', sans-serif",
     },
     body: {
       fontSize: '16px',
       lineHeight: '26px',
       fontWeight: 400,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
     },
     nav: {
       fontSize: '15px',
       lineHeight: '20px',
       fontWeight: 500,
-      fontFamily: "'Inter', sans-serif",
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
     },
     button: {
       fontSize: '16px',
       lineHeight: '24px',
-      fontWeight: 600,
-      fontFamily: "'Inter', sans-serif",
+      fontWeight: 400,
+      fontFamily: "'Plus Jakarta Sans', sans-serif",
     }
   },
   breakpoints: {

@@ -4,18 +4,21 @@ import { theme } from '../../styles/theme'
 const HeroContainer = styled.section`
   padding: 0px 20px 40px;
   background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.6) 100%),
-    url('/Watercolor Turquoise Painting.png');
-  background-size: cover;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.5) 100%),
+    linear-gradient(to bottom, transparent 0%, transparent 85%, rgba(255, 255, 255, 0.8) 95%, rgba(255, 255, 255, 1) 100%),
+    url('/Watercolor Turquoise Painting.jpg');
+  background-size: 100% 100%;
   background-position: center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
-  min-height: 85vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
-  margin-top: -48px; /* Smaller negative margin */
-  padding-top: 120px; /* Reduced padding for header space */
+  margin-top: -100px;
+  margin-bottom: 0;
+  padding-top: 140px; /* Reduced padding to close gap with header */
+  padding-bottom: 100px; /* Reduced padding to prevent overlap */
 
   &::before {
     content: '';
@@ -25,23 +28,25 @@ const HeroContainer = styled.section`
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.06) 0%, transparent 60%),
-      radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 60%),
-      radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.03) 0%, transparent 50%);
-    backdrop-filter: blur(0.5px);
+      radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.02) 0%, transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.02) 0%, transparent 60%),
+      radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.01) 0%, transparent 50%);
+    backdrop-filter: blur(0.2px);
     z-index: 1;
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 0px 32px 60px;
-    padding-top: 140px;
-    margin-top: -60px;
+    padding: 0px 32px 120px;
+    padding-top: 160px;
+    margin-top: -120px;
+    margin-bottom: 0;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 0px 40px 80px;
-    padding-top: 160px;
-    margin-top: -72px;
+    padding: 0px 40px 140px;
+    padding-top: 180px;
+    margin-top: -140px;
+    margin-bottom: 0;
   }
 `
 
@@ -51,14 +56,14 @@ const HeroContent = styled.div`
   text-align: center;
   position: relative;
   z-index: 2;
-  backdrop-filter: blur(15px);
-  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 24px;
   padding: 32px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    0 20px 40px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 40px 32px;
@@ -123,7 +128,7 @@ const SubscribeButton = styled.button`
   padding: 12px 24px;
   border-radius: 12px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 00;
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);

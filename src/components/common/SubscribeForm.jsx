@@ -3,128 +3,145 @@ import { theme } from '../../styles/theme'
 import { useState } from 'react'
 
 const SubscribeContainer = styled.section`
-  padding: 60px 20px;
-  background-color: ${theme.colors.gray[100]};
+  padding: 80px 20px;
+  background: ${theme.colors.white};
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 80px 40px;
+    padding: 100px 40px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 100px 60px;
+    padding: 120px 60px;
   }
 `
 
 const SubscribeContent = styled.div`
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
-  text-align: center;
 `
+
+const Card = styled.div`
+  background: ${theme.colors.white};
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: ${theme.shadows.lg};
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    padding: 36px;
+  }
+`
+
+const Split = styled.div`
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 40px;
+  }
+`
+
+const Left = styled.div``
+const Right = styled.div``
 
 const Title = styled.h2`
   ${theme.typography.h2};
   color: ${theme.colors.text.primary};
-  margin-bottom: 16px;
+  margin: 0 0 8px 0;
 `
 
 const Subtitle = styled.p`
   ${theme.typography.body};
   color: ${theme.colors.text.secondary};
-  margin-bottom: 40px;
+  margin: 0;
 `
 
 const Form = styled.form`
   display: grid;
-  gap: 20px;
-  max-width: 500px;
-  margin: 0 auto;
+  gap: 16px;
+  grid-template-columns: 1fr;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: 
-      "email email"
-      "name state"
-      "button button";
+    grid-template-rows: auto auto auto;
   }
 `
 
 const Input = styled.input`
   padding: 14px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  border: 1px solid ${theme.colors.gray[300]};
+  background: ${theme.colors.white};
+  color: ${theme.colors.text.primary};
+  border-radius: 12px;
   font-size: 16px;
-  font-family: 'Space Grotesk', sans-serif;
-  
-  &:focus {
-    outline: none;
-    border-color: ${theme.colors.primary};
-  }
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
 
-  &:first-of-type {
-    @media (min-width: ${theme.breakpoints.tablet}) {
-      grid-area: email;
-    }
+  &::placeholder { color: ${theme.colors.text.secondary}; opacity: 0.7; }
+
+  &:focus {
+    border-color: ${theme.colors.primary};
+    background: ${theme.colors.white};
   }
 `
 
 const Select = styled.select`
   padding: 14px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  border: 1px solid ${theme.colors.gray[300]};
+  background: ${theme.colors.white};
+  color: ${theme.colors.text.primary};
+  border-radius: 12px;
   font-size: 16px;
-  font-family: 'Space Grotesk', sans-serif;
-  background-color: white;
-  
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-column: 1 / -1;
+  }
+
   &:focus {
-    outline: none;
     border-color: ${theme.colors.primary};
-  }
-
-  @media (min-width: ${theme.breakpoints.tablet}) {
-    grid-area: state;
+    background: ${theme.colors.white};
   }
 `
 
-const NameInput = styled(Input)`
-  @media (min-width: ${theme.breakpoints.tablet}) {
-    grid-area: name;
-  }
-`
+const NameInput = styled(Input)``
 
 const SubmitButton = styled.button`
-  background-color: ${theme.colors.primary};
+  background: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.primaryDark});
   color: ${theme.colors.white};
   border: none;
-  padding: 16px 32px;
-  border-radius: 8px;
+  padding: 16px 24px;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: 600;
-  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background-color: ${theme.colors.primaryDark};
-    transform: translateY(-2px);
-  }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  white-space: nowrap;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    grid-area: button;
+    grid-column: 1 / -1;
   }
+
+  &:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+  &:disabled { opacity: 0.7; cursor: not-allowed; }
 `
 
 const SuccessMessage = styled.div`
   background-color: #10B981;
   color: white;
-  padding: 16px;
-  border-radius: 8px;
-  margin-top: 20px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif;
 `
 
 export const SubscribeForm = () => {
@@ -146,13 +163,10 @@ export const SubscribeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setShowSuccess(true);
       setFormData({ email: '', firstName: '', state: '' });
-      
       setTimeout(() => setShowSuccess(false), 5000);
     }, 1000);
   };
@@ -168,55 +182,60 @@ export const SubscribeForm = () => {
   ];
 
   return (
-    <SubscribeContainer>
+    <SubscribeContainer id="subscribe">
       <SubscribeContent>
-        <Title>Weekly News Roundup</Title>
-        <Subtitle>
-          Subscribe to receive free weekly cannabis, hemp and global investor news roundups!
-        </Subtitle>
+        <Card>
+          <Split>
+            <Left>
+              <Title>Weekly News Roundup</Title>
+              <Subtitle>Subscribe to receive free weekly cannabis, hemp and global investor news roundups!</Subtitle>
+              {showSuccess && (
+                <SuccessMessage>
+                  Thank you for subscribing! You'll receive our next newsletter soon.
+                </SuccessMessage>
+              )}
+            </Left>
 
-        {showSuccess && (
-          <SuccessMessage>
-            Thank you for subscribing! You'll receive our next newsletter soon.
-          </SuccessMessage>
-        )}
+            <Right>
+              <Form onSubmit={handleSubmit}>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
 
-        <Form onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          
-          <NameInput
-            type="text"
-            name="firstName"
-            placeholder="First name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-          
-          <Select
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Choose State</option>
-            {states.map(state => (
-              <option key={state} value={state}>{state}</option>
-            ))}
-          </Select>
-          
-          <SubmitButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE'}
-          </SubmitButton>
-        </Form>
+                <NameInput
+                  type="text"
+                  name="firstName"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+
+                <Select
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Choose State</option>
+                  {states.map(state => (
+                    <option key={state} value={state}>{state}</option>
+                  ))}
+                </Select>
+
+                <SubmitButton type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'SUBSCRIBING...' : 'SUBSCRIBE'}
+                </SubmitButton>
+              </Form>
+            </Right>
+          </Split>
+        </Card>
       </SubscribeContent>
     </SubscribeContainer>
   );
-};
+}

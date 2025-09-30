@@ -7,10 +7,9 @@ import { theme } from '../../styles/theme'
 import Logo from '../common/Logo'
 
 const NavbarContainer = styled.nav`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: ${props => props.isScrolled ? '16px' : '24px'};
   position: sticky;
   top: ${props => props.isScrolled ? '16px' : '0'};
   z-index: 1000;
@@ -70,30 +69,44 @@ const NavLinks = styled.div`
 
 const NavLink = styled(Link)`
   ${theme.typography.nav};
+  font-weight: 600;
+  font-size: ${props => props.isScrolled ? '15px' : '16px'};
   color: ${theme.colors.text.primary};
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
 
   &:hover {
     color: ${theme.colors.primary};
+    transform: translateY(-1px);
+  }
+`
+
+const RightLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${props => props.isScrolled ? '20px' : '32px'};
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    display: none;
+  }
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    gap: ${props => props.isScrolled ? '24px' : '40px'};
   }
 `
 
 const SocialIcons = styled.div`
   display: flex;
   align-items: center;
-  gap: ${props => props.isScrolled ? '8px' : '12px'};
+  gap: ${props => props.isScrolled ? '12px' : '16px'};
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-  @media (max-width: ${theme.breakpoints.tablet}) {
-    display: none;
-  }
 `
 
 const SubscribeLink = styled(Link)`
   font-family: 'Inter', sans-serif;
-  font-size: ${props => props.isScrolled ? '14px' : '16px'};
-  font-weight: 600;
+  font-size: ${props => props.isScrolled ? '15px' : '17px'};
+  font-weight: 700;
   color: ${theme.colors.primary};
   text-decoration: none;
   transition: all 0.3s ease;
@@ -247,12 +260,9 @@ export const Navbar = () => {
     <NavbarContainer isScrolled={isScrolled}>
       <Logo isScrolled={isScrolled} />
       
-      <NavLinks isScrolled={isScrolled}>
-        <NavLink to="/news">News</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-      </NavLinks>
-      
-      <SocialIcons isScrolled={isScrolled}>
+      <RightLinks isScrolled={isScrolled}>
+        <NavLink to="/news" isScrolled={isScrolled}>News</NavLink>
+        <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
         <SubscribeLink 
           to="/#subscribe" 
           isScrolled={isScrolled}
@@ -261,26 +271,28 @@ export const Navbar = () => {
           Subscribe
         </SubscribeLink>
         
-        <YouTubeIcon 
-          href="https://youtube.com" 
-          target="_blank"
-          rel="noopener noreferrer"
-          isScrolled={isScrolled}
-          title="YouTube"
-        >
-          <FaYoutube />
-        </YouTubeIcon>
-        
-        <TwitterIcon 
-          href="https://x.com" 
-          target="_blank"
-          rel="noopener noreferrer"
-          isScrolled={isScrolled}
-          title="X (Twitter)"
-        >
-          <FaXTwitter />
-        </TwitterIcon>
-      </SocialIcons>
+        <SocialIcons isScrolled={isScrolled}>
+          <YouTubeIcon 
+            href="https://youtube.com" 
+            target="_blank"
+            rel="noopener noreferrer"
+            isScrolled={isScrolled}
+            title="YouTube"
+          >
+            <FaYoutube />
+          </YouTubeIcon>
+          
+          <TwitterIcon 
+            href="https://x.com" 
+            target="_blank"
+            rel="noopener noreferrer"
+            isScrolled={isScrolled}
+            title="X (Twitter)"
+          >
+            <FaXTwitter />
+          </TwitterIcon>
+        </SocialIcons>
+      </RightLinks>
 
       <MobileMenuButton onClick={toggleMobileMenu} isOpen={isMobileMenuOpen}>
         <span />

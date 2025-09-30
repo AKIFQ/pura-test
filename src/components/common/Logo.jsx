@@ -21,7 +21,7 @@ const LogoImage = styled.img`
 
 const LogoText = styled.div`
   font-size: ${props => props.isScrolled ? '18px' : '20px'};
-  font-weight: 800;
+  font-weight: 600;
   color: ${theme.colors.text.primary};
   font-family: 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -0.01em;
