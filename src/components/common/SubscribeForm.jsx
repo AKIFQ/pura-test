@@ -5,13 +5,16 @@ import { useState } from 'react'
 const SubscribeContainer = styled.section`
   padding: 80px 20px;
   background: ${theme.colors.white};
+  scroll-margin-top: 100px; /* Account for floating header */
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 100px 40px;
+    scroll-margin-top: 120px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     padding: 120px 60px;
+    scroll-margin-top: 140px;
   }
 `
 

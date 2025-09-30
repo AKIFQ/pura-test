@@ -1,18 +1,19 @@
 import styled from '@emotion/styled'
 import { theme } from '../../styles/theme'
 import { useState } from 'react'
+import { HiOutlineSearch } from 'react-icons/hi'
 
 const NewsContainer = styled.div`
-  padding: 100px 20px 40px 20px;
+  padding: 80px 20px 40px 20px;
   min-height: 100vh;
-  background-color: ${theme.colors.white};
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 120px 32px 60px 32px;
+    padding: 100px 32px 60px 32px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 140px 40px 80px 40px;
+    padding: 120px 40px 80px 40px;
   }
 `
 
@@ -23,19 +24,88 @@ const NewsContent = styled.div`
 
 const NewsHeader = styled.div`
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, ${theme.colors.primary}, #10B981, #F59E0B);
+    border-radius: 2px;
+  }
+`
+
+const CloudBackdrop = styled.div`
+  position: absolute;
+  top: -200px;
+  left: 0;
+  right: 0;
+  bottom: -200px;
+  width: 100%;
+  height: calc(100vh + 400px);
+  background: url('/White Cloud PNG.png') no-repeat center top;
+  background-size: 600px 400px;
+  opacity: 0.3;
+  z-index: 0;
+  pointer-events: none;
+
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    height: calc(100vh + 440px);
+    background-size: 700px 450px;
+    top: -220px;
+    bottom: -220px;
+  }
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    height: calc(100vh + 480px);
+    background-size: 800px 500px;
+    top: -240px;
+    bottom: -240px;
+  }
 `
 
 const Title = styled.h1`
-  ${theme.typography.h1};
-  color: ${theme.colors.text.primary};
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 400;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: linear-gradient(135deg, ${theme.colors.text.primary} 0%, ${theme.colors.primary} 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 10;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 48px;
+    line-height: 56px;
+  }
 `
 
 const Subtitle = styled.p`
-  ${theme.typography.body};
+  font-size: 18px;
+  line-height: 28px;
   color: ${theme.colors.text.secondary};
   margin-bottom: 32px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
+  
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 `
 
 const FiltersContainer = styled.div`
@@ -74,84 +144,128 @@ const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
+`
+
+const SearchWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 480px;
 `
 
 const SearchInput = styled.input`
-  padding: 12px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  padding: 16px 24px 16px 52px;
+  border: 2px solid transparent;
+  border-radius: 24px;
   width: 100%;
-  max-width: 400px;
   font-size: 16px;
+  background: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
   
   &:focus {
     outline: none;
     border-color: ${theme.colors.primary};
+    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.15);
+    transform: translateY(-1px);
+  }
+
+  &::placeholder {
+    color: ${theme.colors.text.secondary};
+    opacity: 0.6;
   }
 `
 
+const SearchIcon = styled.div`
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: ${theme.colors.text.secondary};
+  font-size: 18px;
+  opacity: 0.6;
+  pointer-events: none;
+`
+
 const DateSection = styled.div`
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 10;
 `
 
 const DateHeader = styled.h3`
-  ${theme.typography.h3};
+  font-size: 18px;
+  font-weight: 400;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: ${theme.colors.text.primary};
-  margin-bottom: 16px;
-  padding-bottom: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
   border-bottom: 2px solid ${theme.colors.gray[200]};
 `
 
 const ColumnHeaders = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
 `
 
 const ColumnHeader = styled.div`
   text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px;
-  border-radius: 6px;
+  font-weight: 500;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 8px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
   
   &.thc {
-    background-color: ${theme.colors.primary};
+    background: linear-gradient(135deg, ${theme.colors.primary} 0%, ${theme.colors.primaryDark} 100%);
   }
   
   &.cbd {
-    background-color: #10B981;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   }
   
   &.global-investor {
-    background-color: #F59E0B;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
 `
 
 const NewsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 24px;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 `
 
 const NewsColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 `
 
 const NewsItem = styled.div`
-  padding: 24px;
-  border-radius: 12px;
-  background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors.gray[200]};
-  transition: all 0.3s ease;
-  border-left: 4px solid ${props => {
+  padding: 12px 14px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-left: 3px solid ${props => {
     switch(props.category) {
       case 'thc': return theme.colors.primary;
       case 'cbd': return '#10B981';
@@ -161,16 +275,30 @@ const NewsItem = styled.div`
   }};
   
   &:hover {
-    transform: translateY(-4px);
-    box-shadow: ${theme.shadows.lg};
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: ${props => {
+      switch(props.category) {
+        case 'thc': return theme.colors.primary;
+        case 'cbd': return '#10B981';
+        case 'global-investor': return '#F59E0B';
+        default: return theme.colors.gray[300];
+      }
+    }};
   }
 `
 
-const NewsTitle = styled.h3`
-  ${theme.typography.h3};
+const NewsTitle = styled.h4`
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
   color: ${theme.colors.text.primary};
-  margin-bottom: 12px;
-  font-size: 20px;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
 
 const NewsDescription = styled.p`
@@ -260,6 +388,7 @@ export const News = () => {
     <NewsContainer>
       <NewsContent>
         <NewsHeader>
+          <CloudBackdrop />
           <Title>Weekly News Roundup</Title>
           <Subtitle>
             Subscribe to receive free weekly cannabis, hemp and global investor news roundups!
@@ -267,12 +396,17 @@ export const News = () => {
         </NewsHeader>
 
         <SearchContainer>
-          <SearchInput
-            type="text"
-            placeholder="Search articles..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+          <SearchWrapper>
+            <SearchIcon>
+              <HiOutlineSearch />
+            </SearchIcon>
+            <SearchInput
+              type="text"
+              placeholder="Search articles..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </SearchWrapper>
         </SearchContainer>
 
         {Object.entries(filteredData)

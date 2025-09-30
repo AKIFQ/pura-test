@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import styled from '@emotion/styled'
 import { FaYoutube } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
@@ -103,13 +103,14 @@ const SocialIcons = styled.div`
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `
 
-const SubscribeLink = styled(Link)`
+const SubscribeLink = styled.a`
   font-family: 'Inter', sans-serif;
   font-size: ${props => props.isScrolled ? '15px' : '17px'};
   font-weight: 700;
   color: ${theme.colors.primary};
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     color: ${theme.colors.primaryDark};
@@ -228,22 +229,58 @@ const MobileMenu = styled.div`
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleSubscribeClick = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      // Already on home page, just scroll
+      scrollToSection('subscribe')
+    } else {
+      // Navigate to home page and then scroll
+      navigate('/')
+      setTimeout(() => scrollToSection('subscribe'), 100)
+    }
+  }
+
+  const handleContactClick = (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      // Already on home page, just scroll
+      scrollToSection('contact')
+    } else {
+      // Navigate to home page and then scroll
+      navigate('/')
+      setTimeout(() => scrollToSection('contact'), 100)
+    }
   }
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       const thresholdDown = 80  // Threshold when scrolling down
-      const thresholdUp = 60    // Threshold when scrolling up (hysteresis)
+      const thresholdUp = 20    // Lower threshold when scrolling up (closer to top)
       
-      if (scrollY > thresholdDown && !isScrolled) {
-        setIsScrolled(true)
-      } else if (scrollY < thresholdUp && isScrolled) {
-        setIsScrolled(false)
-      }
+      setIsScrolled(prevScrolled => {
+        if (scrollY <= thresholdUp) {
+          return false  // Always return to normal when near top
+        } else if (scrollY > thresholdDown) {
+          return true   // Always shrink when scrolled down
+        }
+        return prevScrolled  // Keep current state in between thresholds
+      })
     }
 
     // Add scroll listener
@@ -264,16 +301,17 @@ export const Navbar = () => {
         <NavLink to="/news" isScrolled={isScrolled}>News</NavLink>
         <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
         <SubscribeLink 
-          to="/#subscribe" 
+          href="#subscribe" 
           isScrolled={isScrolled}
           title="Subscribe to Newsletter"
+          onClick={handleSubscribeClick}
         >
           Subscribe
         </SubscribeLink>
         
         <SocialIcons isScrolled={isScrolled}>
           <YouTubeIcon 
-            href="https://youtube.com" 
+            href="https://www.youtube.com/@Purablis" 
             target="_blank"
             rel="noopener noreferrer"
             isScrolled={isScrolled}
@@ -283,7 +321,7 @@ export const Navbar = () => {
           </YouTubeIcon>
           
           <TwitterIcon 
-            href="https://x.com" 
+            href="https://x.com/Purablis" 
             target="_blank"
             rel="noopener noreferrer"
             isScrolled={isScrolled}

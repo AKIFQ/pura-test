@@ -3,139 +3,171 @@ import { theme } from '../../styles/theme'
 import { useState } from 'react'
 
 const ContactContainer = styled.div`
-  padding: 100px 20px 40px 20px;
-  min-height: 100vh;
+  padding: 80px 20px;
   background-color: ${theme.colors.white};
+  scroll-margin-top: 100px; /* Account for floating header */
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 120px 32px 60px 32px;
+    padding: 100px 40px;
+    scroll-margin-top: 120px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 140px 40px 80px 40px;
+    padding: 120px 60px;
+    scroll-margin-top: 140px;
   }
 `
 
 const ContactContent = styled.div`
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
 `
 
-const Title = styled.h1`
-  ${theme.typography.h1};
+const Card = styled.div`
+  background: ${theme.colors.white};
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: ${theme.shadows.lg};
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    padding: 36px;
+  }
+`
+
+const Split = styled.div`
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr 1.2fr;
+    align-items: start;
+    gap: 40px;
+  }
+`
+
+const Left = styled.div``
+const Right = styled.div``
+
+const Title = styled.h2`
+  ${theme.typography.h2};
   color: ${theme.colors.text.primary};
-  margin-bottom: 16px;
-  text-align: center;
+  margin: 0 0 8px 0;
 `
 
 const Subtitle = styled.p`
   ${theme.typography.body};
   color: ${theme.colors.text.secondary};
-  margin-bottom: 40px;
-  text-align: center;
-  font-size: 18px;
+  margin: 0;
 `
 
 const ContactForm = styled.form`
   display: grid;
-  gap: 24px;
-  background-color: ${theme.colors.gray[100]};
-  padding: 40px;
-  border-radius: 12px;
-`
-
-const FormRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
   gap: 16px;
+  grid-template-columns: 1fr;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
   }
-
-  &.full-width {
-    grid-template-columns: 1fr;
-  }
-`
-
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Label = styled.label`
-  font-weight: 600;
-  color: ${theme.colors.text.primary};
-  margin-bottom: 8px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 `
 
 const Input = styled.input`
-  padding: 12px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid ${theme.colors.gray[300]};
+  background: ${theme.colors.white};
+  color: ${theme.colors.text.primary};
+  border-radius: 12px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
-  
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &::placeholder { 
+    color: ${theme.colors.text.secondary}; 
+    opacity: 0.7; 
+  }
+
   &:focus {
-    outline: none;
     border-color: ${theme.colors.primary};
+    background: ${theme.colors.white};
   }
 `
 
 const TextArea = styled.textarea`
-  padding: 12px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid ${theme.colors.gray[300]};
+  background: ${theme.colors.white};
+  color: ${theme.colors.text.primary};
+  border-radius: 12px;
   font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
   resize: vertical;
   min-height: 120px;
-  font-family: inherit;
-  transition: border-color 0.3s ease;
-  
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-column: 1 / -1;
+  }
+
   &:focus {
-    outline: none;
     border-color: ${theme.colors.primary};
+    background: ${theme.colors.white};
   }
 `
 
 const Select = styled.select`
-  padding: 12px 16px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 8px;
+  padding: 14px 16px;
+  border: 1px solid ${theme.colors.gray[300]};
+  background: ${theme.colors.white};
+  color: ${theme.colors.text.primary};
+  border-radius: 12px;
   font-size: 16px;
-  background-color: white;
-  transition: border-color 0.3s ease;
-  
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  appearance: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-column: 1 / -1;
+  }
+
   &:focus {
-    outline: none;
     border-color: ${theme.colors.primary};
+    background: ${theme.colors.white};
   }
 `
 
 const SubmitButton = styled.button`
-  background-color: ${theme.colors.primary};
+  background: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.primaryDark});
   color: ${theme.colors.white};
   border: none;
-  padding: 16px 32px;
-  border-radius: 8px;
+  padding: 16px 24px;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
-  transition: all 0.3s ease;
-  justify-self: start;
-  
-  &:hover {
-    background-color: ${theme.colors.primaryDark};
-    transform: translateY(-2px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  white-space: nowrap;
+
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    grid-column: 1 / -1;
   }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
+
+  &:hover { 
+    filter: brightness(1.05); 
+    transform: translateY(-1px); 
+  }
+  &:active { 
+    transform: translateY(0); 
+  }
+  &:disabled { 
+    opacity: 0.7; 
+    cursor: not-allowed; 
   }
 `
 
@@ -188,98 +220,80 @@ export const Contact = () => {
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       <ContactContent>
-        <Title>Contact Us</Title>
-        <Subtitle>
-          Have questions about our newsletter or medicinal alternatives? We'd love to hear from you.
-        </Subtitle>
+        <Card>
+          <Split>
+            <Left>
+              <Title>Contact Us</Title>
+              <Subtitle>
+                Have questions about our newsletter or medicinal alternatives? We'd love to hear from you.
+              </Subtitle>
+              {showSuccess && (
+                <SuccessMessage>
+                  Thank you for your message! We'll get back to you soon.
+                </SuccessMessage>
+              )}
+            </Left>
 
-        {showSuccess && (
-          <SuccessMessage>
-            Thank you for your message! We'll get back to you soon.
-          </SuccessMessage>
-        )}
+            <Right>
+              <ContactForm onSubmit={handleSubmit}>
+                <Input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
 
-        <ContactForm onSubmit={handleSubmit}>
-          <FormRow>
-            <FormGroup>
-              <Label htmlFor="firstName">First Name</Label>
-              <Input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <Label htmlFor="lastName">Last Name</Label>
-              <Input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-          </FormRow>
+                <Input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                />
 
-          <FormRow className="full-width">
-            <FormGroup>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </FormGroup>
-          </FormRow>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
 
-          <FormRow className="full-width">
-            <FormGroup>
-              <Label htmlFor="subject">Subject</Label>
-              <Select
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select a subject</option>
-                <option value="general">General Inquiry</option>
-                <option value="newsletter">Newsletter Question</option>
-                <option value="medical">Medical Information</option>
-                <option value="partnership">Partnership Opportunity</option>
-                <option value="feedback">Feedback</option>
-              </Select>
-            </FormGroup>
-          </FormRow>
+                <Select
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="newsletter">Newsletter Question</option>
+                  <option value="medical">Medical Information</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="feedback">Feedback</option>
+                </Select>
 
-          <FormRow className="full-width">
-            <FormGroup>
-              <Label htmlFor="message">Message</Label>
-              <TextArea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell us more about your inquiry..."
-                required
-              />
-            </FormGroup>
-          </FormRow>
+                <TextArea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us more about your inquiry..."
+                  required
+                />
 
-          <SubmitButton type="submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </SubmitButton>
-        </ContactForm>
+                <SubmitButton type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'SENDING MESSAGE...' : 'SEND MESSAGE'}
+                </SubmitButton>
+              </ContactForm>
+            </Right>
+          </Split>
+        </Card>
       </ContactContent>
     </ContactContainer>
   );

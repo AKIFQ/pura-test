@@ -6,21 +6,21 @@ import { theme } from '../../styles/theme';
 const LogoWrapper = styled(Link)`
   display: flex;
   align-items: center;
-  gap: ${props => props.isScrolled ? '8px' : '10px'};
+  gap: ${props => props.isScrolled ? '10px' : '12px'};
   text-decoration: none;
   cursor: pointer;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
 const LogoImage = styled.img`
-  height: ${props => props.isScrolled ? '24px' : '28px'};
+  height: ${props => props.isScrolled ? '28px' : '34px'};
   width: auto;
   object-fit: contain;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 `;
 
 const LogoText = styled.div`
-  font-size: ${props => props.isScrolled ? '18px' : '20px'};
+  font-size: ${props => props.isScrolled ? '20px' : '24px'};
   font-weight: 600;
   color: ${theme.colors.text.primary};
   font-family: 'Plus Jakarta Sans', sans-serif;
