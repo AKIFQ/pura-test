@@ -35,7 +35,7 @@ const NewsHeader = styled.div`
     transform: translateX(-50%);
     width: 60px;
     height: 4px;
-    background: linear-gradient(90deg, ${theme.colors.primary}, #10B981, #F59E0B);
+    background: linear-gradient(90deg, ${theme.colors.primary}, ${theme.colors.primaryDark});
     border-radius: 2px;
   }
 `
@@ -190,12 +190,18 @@ const SearchIcon = styled.div`
 `
 
 const DateSection = styled.div`
-  margin-bottom: 40px;
-  max-width: 1000px;
+  margin-bottom: 32px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   position: relative;
   z-index: 10;
+  padding-bottom: 24px;
+  border-bottom: 1px solid ${theme.colors.gray[200]};
+  
+  &:last-child {
+    border-bottom: none;
+  }
 `
 
 const DateHeader = styled.h3`
@@ -210,7 +216,7 @@ const DateHeader = styled.h3`
 
 const ColumnHeaders = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 12px;
 `
@@ -227,23 +233,28 @@ const ColumnHeader = styled.div`
   font-family: 'Inter', sans-serif;
   
   &.thc {
-    background: linear-gradient(135deg, ${theme.colors.primary} 0%, ${theme.colors.primaryDark} 100%);
+    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
   }
   
   &.cbd {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    background: linear-gradient(135deg, #6b7280 0%, #475569 100%);
   }
   
   &.global-investor {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
+  }
+
+  &.medical {
+    background: linear-gradient(135deg, #6b7280 0%, #475569 100%);
   }
 `
 
 const NewsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   margin-bottom: 24px;
+  align-items: start;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
@@ -258,47 +269,59 @@ const NewsColumn = styled.div`
 `
 
 const NewsItem = styled.div`
-  padding: 12px 14px;
-  border-radius: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid ${theme.colors.gray[300]};
   transition: all 0.2s ease;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
   border-left: 3px solid ${props => {
     switch(props.category) {
       case 'thc': return theme.colors.primary;
-      case 'cbd': return '#10B981';
-      case 'global-investor': return '#F59E0B';
+      case 'cbd': return '#64748b';
+      case 'global-investor': return '#6b7280';
+      case 'medical': return theme.colors.primaryDark;
       default: return theme.colors.gray[300];
     }
   }};
   
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-color: ${props => {
       switch(props.category) {
-        case 'thc': return theme.colors.primary;
-        case 'cbd': return '#10B981';
-        case 'global-investor': return '#F59E0B';
-        default: return theme.colors.gray[300];
+        case 'thc': return theme.colors.primaryDark;
+        case 'cbd': return '#475569';
+        case 'global-investor': return '#475569';
+        case 'medical': return theme.colors.primary;
+        default: return theme.colors.gray[400];
       }
     }};
+    
+    h4 {
+      text-decoration: underline;
+      text-decoration-color: ${props => {
+        switch(props.category) {
+          case 'thc': return theme.colors.primary;
+          case 'cbd': return '#64748b';
+          case 'global-investor': return '#6b7280';
+          case 'medical': return theme.colors.primaryDark;
+          default: return theme.colors.gray[400];
+        }
+      }};
+    }
   }
 `
 
 const NewsTitle = styled.h4`
-  font-size: 13px;
+  font-size: 12px;
   line-height: 18px;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
   color: ${theme.colors.text.primary};
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  text-align: justify;
+  text-justify: inter-word;
+  word-break: break-word;
 `
 
 const NewsDescription = styled.p`
@@ -325,11 +348,13 @@ const CategoryBadge = styled.span`
   ${props => {
     switch(props.category) {
       case 'thc':
-        return `background-color: ${theme.colors.primary}; color: white;`;
+        return `background-color: ${theme.colors.primaryDark}; color: white;`;
       case 'cbd':
-        return `background-color: #10B981; color: white;`;
+        return `background-color: #64748b; color: white;`;
       case 'global-investor':
-        return `background-color: #F59E0B; color: white;`;
+        return `background-color: #6b7280; color: white;`;
+      case 'med':
+        return `background-color: ${theme.colors.primary}; color: white;`;
       default:
         return `background-color: ${theme.colors.gray[200]}; color: ${theme.colors.text.primary};`;
     }
@@ -338,6 +363,12 @@ const CategoryBadge = styled.span`
 
 // Newsletter data organized by date and category
 const newsData = {
+  "2025-09-29": {
+    thc: ["🧠 MJ Users Show Sharper Brains"],
+    cbd: ["⚖️ NY Court Strikes Equity"],
+    "global-investor": ["🫘 GSK will pay up to $2.2B to settle about 80,000 Zantac cancer claims"],
+    medical: ["💊 Pharma Creating Cancer 🎓 Universities like Psilocybin 🌿 Hemp Unchanged"]
+  },
   "2025-08-18": {
     thc: ["🌴 Hawaii Reforms Cannabis", "⚠️ Florida Bans 7-OH Kratom", "🍷 Americans Rethink Drinking"],
     cbd: ["⚖️ NY Court Strikes Equity", "🍷 Americans Rethink Drinking", "🔫 26 Cartel Figures Come to USA"],
@@ -391,7 +422,8 @@ export const News = () => {
           <CloudBackdrop />
           <Title>Weekly News Roundup</Title>
           <Subtitle>
-            Subscribe to receive free weekly cannabis, hemp and global investor news roundups!
+            A clean, reliable archive of our weekly CBD, hemp and investor headlines.
+            Built for partners and advertisers to review our editorial quality and depth.
           </Subtitle>
         </NewsHeader>
 
@@ -418,32 +450,38 @@ export const News = () => {
             <ColumnHeaders>
               <ColumnHeader className="thc">THC</ColumnHeader>
               <ColumnHeader className="cbd">CBD</ColumnHeader>
-              <ColumnHeader className="global-investor">Global Investor</ColumnHeader>
+              <ColumnHeader className="global-investor">GLOBAL INVESTOR</ColumnHeader>
+              <ColumnHeader className="medical">MEDICAL</ColumnHeader>
             </ColumnHeaders>
             
             <NewsGrid>
               <NewsColumn>
-                {categories.thc?.map((article, index) => (
-                  <NewsItem key={`thc-${index}`} category="thc">
-                    <NewsTitle>{article}</NewsTitle>
+                {categories.thc ? (
+                  <NewsItem category="thc">
+                    <NewsTitle>{categories.thc[0]}</NewsTitle>
                   </NewsItem>
-                )) || []}
+                ) : null}
               </NewsColumn>
-              
               <NewsColumn>
-                {categories.cbd?.map((article, index) => (
-                  <NewsItem key={`cbd-${index}`} category="cbd">
-                    <NewsTitle>{article}</NewsTitle>
+                {categories.cbd ? (
+                  <NewsItem category="cbd">
+                    <NewsTitle>{categories.cbd[0]}</NewsTitle>
                   </NewsItem>
-                )) || []}
+                ) : null}
               </NewsColumn>
-              
               <NewsColumn>
-                {categories["global-investor"]?.map((article, index) => (
-                  <NewsItem key={`global-investor-${index}`} category="global-investor">
-                    <NewsTitle>{article}</NewsTitle>
+                {categories["global-investor"] ? (
+                  <NewsItem category="global-investor">
+                    <NewsTitle>{categories["global-investor"][0]}</NewsTitle>
                   </NewsItem>
-                )) || []}
+                ) : null}
+              </NewsColumn>
+              <NewsColumn>
+                {categories.medical ? (
+                  <NewsItem category="medical">
+                    <NewsTitle>{categories.medical[0]}</NewsTitle>
+                  </NewsItem>
+                ) : null}
               </NewsColumn>
             </NewsGrid>
           </DateSection>

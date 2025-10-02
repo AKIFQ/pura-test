@@ -4,8 +4,6 @@ import { theme } from './theme'
 export const GlobalStyles = () => (
   <Global
     styles={css`
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
       * {
         margin: 0;
         padding: 0;
@@ -17,12 +15,13 @@ export const GlobalStyles = () => (
       }
 
       body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
         color: ${theme.colors.text.primary};
         background-color: ${theme.colors.background};
-        line-height: 1.5;
+        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
       }
 
       h1 {
@@ -73,7 +72,20 @@ export const GlobalStyles = () => (
 
       ::selection {
         background-color: ${theme.colors.primary};
-        color: ${theme.colors.text.primary};
+        color: ${theme.colors.white};
+      }
+      
+      /* Brutalist paint-like texture effects */
+      .texture-block {
+        position: relative;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.03) 50%, transparent 52%);
+          pointer-events: none;
+        }
       }
     `}
   />
