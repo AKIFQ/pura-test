@@ -277,7 +277,7 @@ export const Navbar = () => {
 
   return (
     <NavbarContainer isScrolled={isScrolled}>
-      <Logo isScrolled={isScrolled} />
+      <Logo />
       
       <RightLinks isScrolled={isScrolled}>
         <NavLink to="/news" isScrolled={isScrolled}>News</NavLink>

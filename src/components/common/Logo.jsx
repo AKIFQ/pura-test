@@ -3,40 +3,41 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { theme } from '../../styles/theme';
 
-const LogoWrapper = styled(Link)`
+const LogoWrapper = styled(Link, {
+  shouldForwardProp: (prop) => prop !== 'isScrolled',
+})`
   display: flex;
   align-items: center;
-  gap: ${props => props.isScrolled ? '10px' : '12px'};
+  gap: 12px;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease;
 `;
 
 const LogoImage = styled.img`
-  height: ${props => props.isScrolled ? '28px' : '34px'};
+  height: 34px;
   width: auto;
   object-fit: contain;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease;
 `;
 
 const LogoText = styled.div`
-  font-size: ${props => props.isScrolled ? '20px' : '24px'};
+  font-size: 24px;
   font-weight: 600;
-  color: ${theme.colors.text.primary};
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: ${theme.colors.dark};
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: -0.01em;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s ease;
 `;
 
-const Logo = ({ isScrolled = false }) => {
+const Logo = () => {
   return (
-    <LogoWrapper to="/" isScrolled={isScrolled}>
+    <LogoWrapper to="/">
       <LogoImage
         src="/RingCentral P-Websites Work v110.png"
         alt="Purablis Logo"
-        isScrolled={isScrolled}
       />
-      <LogoText isScrolled={isScrolled}>Purablis</LogoText>
+      <LogoText>Purablis</LogoText>
     </LogoWrapper>
   );
 };

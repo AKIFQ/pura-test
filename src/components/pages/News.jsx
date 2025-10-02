@@ -396,7 +396,6 @@ const News = () => {
     <NewsContainer>
       <NewsContent>
         <NewsHeader>
-          <CloudBackdrop />
           <Title>Weekly News Roundup</Title>
           <Subtitle>
             A clean, reliable archive of our weekly CBD, hemp and investor headlines.
