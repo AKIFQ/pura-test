@@ -101,19 +101,48 @@ const SubscribeLink = styled.a`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: ${theme.colors.white};
-  background: ${theme.colors.primaryDark};
+  background: ${theme.colors.dark};
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 12px 24px;
   clip-path: polygon(
-    0% 20%, 8% 10%, 20% 12%, 32% 8%, 44% 14%, 56% 10%, 68% 16%, 80% 12%, 92% 18%, 100% 20%,
-    100% 80%, 92% 82%, 80% 88%, 68% 84%, 56% 90%, 44% 86%, 32% 92%, 20% 88%, 8% 90%, 0% 80%
+    0% 8%, 2% 3%, 5% 1%, 10% 0%, 15% 1%, 20% 2%, 
+    25% 1%, 30% 0%, 35% 1%, 40% 0%, 45% 1%, 50% 0%,
+    55% 1%, 60% 0%, 65% 2%, 70% 1%, 75% 2%, 80% 1%,
+    85% 0%, 90% 2%, 95% 1%, 98% 3%, 100% 8%,
+    100% 92%, 98% 97%, 95% 99%, 90% 100%, 85% 99%,
+    80% 98%, 75% 99%, 70% 100%, 65% 99%, 60% 100%,
+    55% 99%, 50% 100%, 45% 99%, 40% 100%, 35% 99%,
+    30% 100%, 25% 99%, 20% 98%, 15% 99%, 10% 100%,
+    5% 99%, 2% 97%, 0% 92%
   );
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.03) 2px,
+        rgba(255,255,255,0.03) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      );
+    pointer-events: none;
+  }
 
   &:hover {
-    background: ${theme.colors.dark};
-    transform: translateY(-2px);
+    background: ${theme.colors.primaryDark};
   }
 `
 

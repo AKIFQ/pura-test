@@ -142,28 +142,62 @@ const Select = styled.select`
 `
 
 const SubmitButton = styled.button`
-  background: linear-gradient(135deg, ${theme.colors.primary}, ${theme.colors.primaryDark});
+  background: ${theme.colors.dark};
   color: ${theme.colors.white};
   border: none;
-  padding: 16px 24px;
-  border-radius: 12px;
+  padding: 20px 32px;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  position: relative;
+  clip-path: polygon(
+    0% 8%, 2% 3%, 5% 1%, 10% 0%, 15% 1%, 20% 2%, 
+    25% 1%, 30% 0%, 35% 1%, 40% 0%, 45% 1%, 50% 0%,
+    55% 1%, 60% 0%, 65% 2%, 70% 1%, 75% 2%, 80% 1%,
+    85% 0%, 90% 2%, 95% 1%, 98% 3%, 100% 8%,
+    100% 92%, 98% 97%, 95% 99%, 90% 100%, 85% 99%,
+    80% 98%, 75% 99%, 70% 100%, 65% 99%, 60% 100%,
+    55% 99%, 50% 100%, 45% 99%, 40% 100%, 35% 99%,
+    30% 100%, 25% 99%, 20% 98%, 15% 99%, 10% 100%,
+    5% 99%, 2% 97%, 0% 92%
+  );
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.03) 2px,
+        rgba(255,255,255,0.03) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      );
+    pointer-events: none;
+  }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     grid-column: 1 / -1;
   }
 
   &:hover { 
-    filter: brightness(1.05); 
-    transform: translateY(-1px); 
+    background: ${theme.colors.primaryDark};
   }
   &:active { 
-    transform: translateY(0); 
+    transform: scale(0.98); 
   }
   &:disabled { 
     opacity: 0.7; 

@@ -130,12 +130,12 @@ const SubscribeButton = styled.a`
   background: ${theme.colors.dark};
   color: ${theme.colors.white};
   border: none;
-  padding: 20px 48px;
+  padding: 24px 60px;
   font-size: 16px;
   font-weight: 700;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -143,25 +143,49 @@ const SubscribeButton = styled.a`
   align-items: center;
   gap: 12px;
   clip-path: polygon(
-    0% 10%, 3% 5%, 7% 3%, 12% 1%, 18% 2%, 24% 1%, 
-    30% 0%, 36% 2%, 42% 1%, 48% 0%, 54% 2%, 60% 1%,
-    66% 0%, 72% 2%, 78% 1%, 84% 2%, 90% 1%, 95% 3%, 100% 10%,
-    100% 90%, 97% 95%, 93% 97%, 88% 99%, 82% 98%,
-    76% 99%, 70% 100%, 64% 98%, 58% 99%, 52% 100%,
-    46% 98%, 40% 99%, 34% 100%, 28% 98%, 22% 99%,
-    16% 100%, 10% 97%, 5% 95%, 0% 90%
+    0% 8%, 2% 3%, 5% 1%, 10% 0%, 15% 1%, 20% 2%, 
+    25% 1%, 30% 0%, 35% 1%, 40% 0%, 45% 1%, 50% 0%,
+    55% 1%, 60% 0%, 65% 2%, 70% 1%, 75% 2%, 80% 1%,
+    85% 0%, 90% 2%, 95% 1%, 98% 3%, 100% 8%,
+    100% 92%, 98% 97%, 95% 99%, 90% 100%, 85% 99%,
+    80% 98%, 75% 99%, 70% 100%, 65% 99%, 60% 100%,
+    55% 99%, 50% 100%, 45% 99%, 40% 100%, 35% 99%,
+    30% 100%, 25% 99%, 20% 98%, 15% 99%, 10% 100%,
+    5% 99%, 2% 97%, 0% 92%
   );
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.03) 2px,
+        rgba(255,255,255,0.03) 4px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 2px,
+        rgba(255,255,255,0.02) 4px
+      );
+    pointer-events: none;
+  }
 
   &::after {
     content: '→';
     font-size: 24px;
     transition: transform 0.2s ease;
+    position: relative;
+    z-index: 1;
   }
 
   &:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
     background: ${theme.colors.primaryDark};
   }
   
@@ -169,19 +193,14 @@ const SubscribeButton = styled.a`
     transform: translateX(4px);
   }
 
-  &:active {
-    transform: translate(0, 0);
-    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
-  }
-
   @media (min-width: ${theme.breakpoints.tablet}) {
     font-size: 17px;
-    padding: 22px 52px;
+    padding: 26px 64px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     font-size: 18px;
-    padding: 24px 56px;
+    padding: 28px 68px;
   }
 `
 
