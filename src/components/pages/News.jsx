@@ -368,7 +368,7 @@ const newsData = {
   }
 };
 
-export const News = () => {
+const News = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Filter news data based on search term
@@ -467,3 +467,5 @@ export const News = () => {
     </NewsContainer>
   );
 };
+
+export default News;
