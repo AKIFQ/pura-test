@@ -4,16 +4,17 @@ import { useState } from 'react'
 import { HiOutlineSearch } from 'react-icons/hi'
 
 const NewsContainer = styled.div`
-  padding: 80px 20px 40px 20px;
+  padding: 120px 20px 80px 20px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background: ${theme.colors.white};
+  position: relative;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 100px 32px 60px 32px;
+    padding: 140px 32px 100px 32px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 120px 40px 80px 40px;
+    padding: 160px 40px 120px 40px;
   }
 `
 
@@ -23,88 +24,62 @@ const NewsContent = styled.div`
 `
 
 const NewsHeader = styled.div`
-  text-align: center;
-  margin-bottom: 48px;
+  text-align: left;
+  margin-bottom: 80px;
   position: relative;
+  padding-left: 0;
   
   &::before {
     content: '';
     position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background: linear-gradient(90deg, ${theme.colors.primary}, ${theme.colors.primaryDark});
-    border-radius: 2px;
-  }
-`
-
-const CloudBackdrop = styled.div`
-  position: absolute;
-  top: -200px;
-  left: 0;
-  right: 0;
-  bottom: -200px;
-  width: 100%;
-  height: calc(100vh + 400px);
-  background: url('/White Cloud PNG.png') no-repeat center top;
-  background-size: 600px 400px;
-  opacity: 0.3;
-  z-index: 0;
-  pointer-events: none;
-
-
-  @media (min-width: ${theme.breakpoints.tablet}) {
-    height: calc(100vh + 440px);
-    background-size: 700px 450px;
-    top: -220px;
-    bottom: -220px;
-  }
-
-  @media (min-width: ${theme.breakpoints.desktop}) {
-    height: calc(100vh + 480px);
-    background-size: 800px 500px;
-    top: -240px;
-    bottom: -240px;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100%;
+    background: ${theme.colors.dark};
+    opacity: 0.05;
+    clip-path: polygon(
+      10% 0%, 20% 2%, 30% 1%, 40% 3%, 50% 1%, 60% 2%, 70% 1%, 80% 3%, 90% 1%, 100% 0%,
+      98% 100%, 90% 99%, 80% 100%, 70% 98%, 60% 100%, 50% 99%, 40% 100%, 30% 98%, 20% 100%, 10% 99%, 0% 100%
+    );
+    z-index: 0;
   }
 `
 
 const Title = styled.h1`
-  font-size: 36px;
-  line-height: 44px;
-  font-weight: 400;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: linear-gradient(135deg, ${theme.colors.text.primary} 0%, ${theme.colors.primary} 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
+  font-size: 56px;
+  line-height: 1.1;
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  color: ${theme.colors.dark};
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
   position: relative;
   z-index: 10;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 72px;
+  }
+
+  @media (min-width: ${theme.breakpoints.desktop}) {
+    font-size: 88px;
   }
 `
 
 const Subtitle = styled.p`
   font-size: 18px;
-  line-height: 28px;
+  line-height: 1.6;
   color: ${theme.colors.text.secondary};
-  margin-bottom: 32px;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: 500;
+  margin-bottom: 60px;
+  max-width: 700px;
+  font-weight: 400;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   position: relative;
   z-index: 10;
   
   @media (min-width: ${theme.breakpoints.tablet}) {
     font-size: 20px;
-    line-height: 30px;
   }
 `
 
@@ -223,29 +198,31 @@ const ColumnHeaders = styled.div`
 
 const ColumnHeader = styled.div`
   text-align: center;
-  font-weight: 500;
-  font-size: 11px;
-  padding: 6px 8px;
-  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 12px 8px;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
   
-  &.thc {
-    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
-  }
-  
-  &.cbd {
-    background: linear-gradient(135deg, #6b7280 0%, #475569 100%);
-  }
-  
+  &.thc,
   &.global-investor {
-    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
+    background: ${theme.colors.primaryDark};
+    clip-path: polygon(
+      0% 15%, 5% 5%, 15% 8%, 25% 3%, 35% 7%, 45% 2%, 55% 6%, 65% 4%, 75% 8%, 85% 5%, 95% 10%, 100% 15%,
+      100% 85%, 95% 90%, 85% 95%, 75% 92%, 65% 96%, 55% 94%, 45% 98%, 35% 93%, 25% 97%, 15% 92%, 5% 95%, 0% 85%
+    );
   }
-
+  
+  &.cbd,
   &.medical {
-    background: linear-gradient(135deg, #6b7280 0%, #475569 100%);
+    background: ${theme.colors.dark};
+    clip-path: polygon(
+      0% 15%, 5% 5%, 15% 8%, 25% 3%, 35% 7%, 45% 2%, 55% 6%, 65% 4%, 75% 8%, 85% 5%, 95% 10%, 100% 15%,
+      100% 85%, 95% 90%, 85% 95%, 75% 92%, 65% 96%, 55% 94%, 45% 98%, 35% 93%, 25% 97%, 15% 92%, 5% 95%, 0% 85%
+    );
   }
 `
 

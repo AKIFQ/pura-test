@@ -3,167 +3,185 @@ import { Link } from 'react-router-dom'
 import { theme } from '../../styles/theme'
 
 const HeroContainer = styled.section`
-  padding: 0px 20px 40px;
-  background: 
-    linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.6) 100%),
-    linear-gradient(to bottom, transparent 0%, transparent 85%, rgba(255, 255, 255, 0.85) 95%, rgba(255, 255, 255, 1) 100%),
-    url('/Watercolor Turquoise Painting.jpg');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 80px 20px 80px;
+  background: ${theme.colors.white};
   position: relative;
-  overflow: hidden;
-  min-height: 100vh;
+  overflow: visible;
+  min-height: 90vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  margin-top: -100px;
-  margin-bottom: 0;
-  padding-top: 180px; /* Increased to push content down */
-  padding-bottom: 100px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    right: 5%;
+    width: 400px;
+    height: 400px;
+    background: ${theme.colors.primaryDark};
+    opacity: 0.08;
+    clip-path: polygon(
+      5% 10%, 10% 5%, 20% 8%, 30% 3%, 40% 7%, 50% 2%,
+      60% 6%, 70% 4%, 80% 8%, 90% 5%, 95% 10%,
+      98% 20%, 95% 30%, 97% 40%, 93% 50%, 96% 60%,
+      94% 70%, 97% 80%, 92% 90%, 88% 95%,
+      80% 92%, 70% 96%, 60% 94%, 50% 98%, 40% 93%,
+      30% 97%, 20% 92%, 10% 95%, 5% 88%,
+      2% 80%, 5% 70%, 3% 60%, 7% 50%, 4% 40%,
+      6% 30%, 3% 20%, 8% 10%
+    );
+    z-index: 0;
+  }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 0px 32px 120px;
-    padding-top: 200px;
-    margin-top: -120px;
-    margin-bottom: 0;
+    padding: 100px 40px 100px;
+    
+    &::before {
+      width: 500px;
+      height: 500px;
+      top: -8%;
+      right: 8%;
+    }
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 0px 40px 140px;
-    padding-top: 220px;
-    margin-top: -140px;
-    margin-bottom: 0;
+    padding: 120px 60px 120px;
+    
+    &::before {
+      width: 600px;
+      height: 600px;
+      top: -10%;
+      right: 10%;
+    }
   }
 `
 
 const HeroContent = styled.div`
-  max-width: 700px;
+  max-width: 900px;
   margin: 0;
   text-align: left;
   position: relative;
   z-index: 2;
-  padding: 0 24px;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 0 32px;
-    max-width: 750px;
+    max-width: 1000px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 0 40px;
-    max-width: 800px;
+    max-width: 1100px;
   }
 `
 
 const Title = styled.h1`
-  margin-bottom: 20px;
-  font-size: 28px;
-  line-height: 34px;
-  font-weight: 400;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  color: ${theme.colors.text.primary};
-  text-shadow: 0 3px 6px rgba(255, 255, 255, 0.9);
-  letter-spacing: -0.02em;
-
+  margin-bottom: 40px;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 800;
+  color: ${theme.colors.dark};
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  text-shadow: none;
+  
   @media (min-width: ${theme.breakpoints.tablet}) {
-    margin-bottom: 24px;
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 64px;
+    margin-bottom: 50px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    margin-bottom: 28px;
-    font-size: 42px;
-    line-height: 48px;
+    font-size: 80px;
+    margin-bottom: 60px;
   }
 
   span {
-    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 600;
+    color: ${theme.colors.primaryDark};
+    font-weight: 800;
+    display: block;
+    margin-top: 12px;
   }
 `
 
 const Description = styled.p`
-  color: ${theme.colors.text.primary};
-  opacity: 0.85;
-  margin-bottom: 28px;
-  font-size: 14px;
-  line-height: 22px;
-  font-family: 'Inter', sans-serif;
+  color: ${theme.colors.text.secondary};
+  margin-bottom: 50px;
+  font-size: 16px;
+  line-height: 1.8;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
-  max-width: 500px;
-  margin-left: 0;
-  margin-right: auto;
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  text-shadow: none;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    margin-bottom: 32px;
-    font-size: 16px;
-    line-height: 24px;
-    max-width: 550px;
+    margin-bottom: 60px;
+    font-size: 18px;
+    max-width: 650px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    margin-bottom: 36px;
-    font-size: 17px;
-    line-height: 26px;
-    max-width: 600px;
+    margin-bottom: 70px;
+    font-size: 20px;
+    max-width: 700px;
   }
 `
 
 const SubscribeButton = styled.a`
-  background: linear-gradient(135deg, ${theme.colors.primary} 0%, ${theme.colors.primaryDark} 100%);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+  background: ${theme.colors.dark};
+  color: ${theme.colors.white};
+  border: none;
+  padding: 20px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  clip-path: polygon(
+    0% 10%, 3% 5%, 7% 3%, 12% 1%, 18% 2%, 24% 1%, 
+    30% 0%, 36% 2%, 42% 1%, 48% 0%, 54% 2%, 60% 1%,
+    66% 0%, 72% 2%, 78% 1%, 84% 2%, 90% 1%, 95% 3%, 100% 10%,
+    100% 90%, 97% 95%, 93% 97%, 88% 99%, 82% 98%,
+    76% 99%, 70% 100%, 64% 98%, 58% 99%, 52% 100%,
+    46% 98%, 40% 99%, 34% 100%, 28% 98%, 22% 99%,
+    16% 100%, 10% 97%, 5% 95%, 0% 90%
+  );
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15);
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+  &::after {
+    content: '→';
+    font-size: 24px;
+    transition: transform 0.2s ease;
   }
 
   &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
-    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
-    
-    &::before {
-      left: 100%;
-    }
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+    background: ${theme.colors.primaryDark};
+  }
+  
+  &:hover::after {
+    transform: translateX(4px);
+  }
+
+  &:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 14px 28px;
-    font-size: 15px;
-    margin-top: 8px;
+    font-size: 17px;
+    padding: 22px 52px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 16px 32px;
-    font-size: 16px;
-    margin-top: 12px;
+    font-size: 18px;
+    padding: 24px 56px;
   }
 `
 

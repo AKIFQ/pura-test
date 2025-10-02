@@ -71,21 +71,87 @@ export const GlobalStyles = () => (
       }
 
       ::selection {
-        background-color: ${theme.colors.primary};
+        background-color: ${theme.colors.primaryDark};
         color: ${theme.colors.white};
       }
       
       /* Brutalist paint-like texture effects */
-      .texture-block {
+      .brush-stroke-bg {
         position: relative;
+        background: ${theme.colors.dark};
+        clip-path: polygon(
+          0% 8%, 2% 3%, 5% 1%, 10% 0%, 15% 1%, 20% 2%, 
+          25% 1%, 30% 0%, 35% 1%, 40% 0%, 45% 1%, 50% 0%,
+          55% 1%, 60% 0%, 65% 2%, 70% 1%, 75% 2%, 80% 1%,
+          85% 0%, 90% 2%, 95% 1%, 98% 3%, 100% 8%,
+          100% 92%, 98% 97%, 95% 99%, 90% 100%, 85% 99%,
+          80% 98%, 75% 99%, 70% 100%, 65% 99%, 60% 100%,
+          55% 99%, 50% 100%, 45% 99%, 40% 100%, 35% 99%,
+          30% 100%, 25% 99%, 20% 98%, 15% 99%, 10% 100%,
+          5% 99%, 2% 97%, 0% 92%
+        );
         
         &::before {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.03) 50%, transparent 52%);
+          background: 
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 2px,
+              rgba(255,255,255,0.03) 2px,
+              rgba(255,255,255,0.03) 4px
+            ),
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(255,255,255,0.02) 2px,
+              rgba(255,255,255,0.02) 4px
+            );
           pointer-events: none;
         }
+      }
+      
+      .purple-brush-stroke-bg {
+        position: relative;
+        background: ${theme.colors.primaryDark};
+        clip-path: polygon(
+          0% 5%, 3% 2%, 7% 1%, 12% 0%, 18% 1%, 24% 1%, 
+          30% 0%, 36% 1%, 42% 0%, 48% 1%, 54% 0%, 60% 1%,
+          66% 0%, 72% 1%, 78% 1%, 84% 0%, 90% 2%, 95% 1%, 100% 5%,
+          100% 95%, 97% 98%, 93% 99%, 88% 100%, 82% 99%,
+          76% 99%, 70% 100%, 64% 99%, 58% 100%, 52% 99%,
+          46% 100%, 40% 99%, 34% 100%, 28% 99%, 22% 100%,
+          16% 99%, 10% 98%, 5% 99%, 0% 95%
+        );
+      }
+      
+      .paint-block {
+        position: relative;
+        background: ${theme.colors.dark};
+        
+        &::after {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          background: ${theme.colors.dark};
+          z-index: -1;
+          filter: blur(3px);
+          opacity: 0.3;
+        }
+      }
+      
+      .rough-edge {
+        filter: url('#roughEdgeFilter');
+      }
+      
+      /* SVG filter for rough edges */
+      svg.filters {
+        position: absolute;
+        width: 0;
+        height: 0;
       }
     `}
   />

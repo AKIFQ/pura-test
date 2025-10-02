@@ -10,44 +10,22 @@ const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: ${props => props.isScrolled ? '16px' : '0'};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  
-  /* Smooth size and appearance changes only */
-  padding: ${props => props.isScrolled ? '12px 20px' : '16px 20px'};
-  margin: ${props => props.isScrolled ? '16px 20px 0 20px' : '0'};
-  background: ${props => props.isScrolled 
-    ? 'rgba(255, 255, 255, 0.95)' 
-    : 'transparent'};
-  backdrop-filter: ${props => props.isScrolled ? 'blur(25px)' : 'none'};
-  border-bottom: ${props => props.isScrolled 
-    ? '1px solid rgba(0, 0, 0, 0.08)' 
-    : 'none'};
-  box-shadow: ${props => props.isScrolled 
-    ? '0 8px 25px rgba(0, 0, 0, 0.15)' 
-    : 'none'};
-  border-radius: ${props => props.isScrolled ? '16px' : '0'};
-  
-  /* Keep width consistent, just add margins for floating effect */
-  width: 100%;
-  max-width: ${props => props.isScrolled ? 'calc(100% - 40px)' : '100%'};
+  padding: 20px 20px;
+  background: ${theme.colors.white};
+  border-bottom: 3px solid ${theme.colors.dark};
+  transition: all 0.2s ease;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: ${props => props.isScrolled ? '14px 24px' : '20px 32px'};
-    margin: ${props => props.isScrolled ? '20px 32px 0 32px' : '0'};
-    max-width: ${props => props.isScrolled ? 'calc(100% - 64px)' : '100%'};
-    gap: ${props => props.isScrolled ? '20px' : '32px'};
-    top: ${props => props.isScrolled ? '20px' : '0'};
+    padding: 24px 32px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: ${props => props.isScrolled ? '16px 32px' : '24px 40px'};
-    margin: ${props => props.isScrolled ? '24px 40px 0 40px' : '0'};
-    max-width: ${props => props.isScrolled ? 'calc(100% - 80px)' : '100%'};
-    gap: ${props => props.isScrolled ? '24px' : '40px'};
-    top: ${props => props.isScrolled ? '24px' : '0'};
+    padding: 28px 40px;
   }
 `
 
@@ -69,15 +47,28 @@ const NavLinks = styled.div`
 
 const NavLink = styled(Link)`
   ${theme.typography.nav};
-  font-weight: 600;
-  font-size: ${props => props.isScrolled ? '15px' : '16px'};
-  color: ${theme.colors.text.primary};
+  color: ${theme.colors.dark};
   transition: all 0.2s ease;
   text-decoration: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: ${theme.colors.primaryDark};
+    transition: width 0.2s ease;
+  }
 
   &:hover {
-    color: ${theme.colors.primary};
-    transform: translateY(-1px);
+    color: ${theme.colors.primaryDark};
+    
+    &::after {
+      width: 100%;
+    }
   }
 `
 
@@ -104,17 +95,25 @@ const SocialIcons = styled.div`
 `
 
 const SubscribeLink = styled.a`
-  font-family: 'Inter', sans-serif;
-  font-size: ${props => props.isScrolled ? '15px' : '17px'};
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
   font-weight: 700;
-  color: ${theme.colors.primary};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: ${theme.colors.white};
+  background: ${theme.colors.primaryDark};
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
+  padding: 10px 20px;
+  clip-path: polygon(
+    0% 20%, 8% 10%, 20% 12%, 32% 8%, 44% 14%, 56% 10%, 68% 16%, 80% 12%, 92% 18%, 100% 20%,
+    100% 80%, 92% 82%, 80% 88%, 68% 84%, 56% 90%, 44% 86%, 32% 92%, 20% 88%, 8% 90%, 0% 80%
+  );
 
   &:hover {
-    color: ${theme.colors.primaryDark};
-    transform: translateY(-1px);
+    background: ${theme.colors.dark};
+    transform: translateY(-2px);
   }
 `
 
@@ -122,43 +121,26 @@ const SocialIcon = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${props => props.isScrolled ? '32px' : '36px'};
-  height: ${props => props.isScrolled ? '32px' : '36px'};
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.05);
-  color: ${theme.colors.text.primary};
-  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  color: ${theme.colors.dark};
+  transition: all 0.2s ease;
   text-decoration: none;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    background: rgba(0, 0, 0, 0.1);
+    color: ${theme.colors.primaryDark};
+    transform: scale(1.15);
   }
 
   svg {
-    width: ${props => props.isScrolled ? '16px' : '18px'};
-    height: ${props => props.isScrolled ? '16px' : '18px'};
+    width: 20px;
+    height: 20px;
   }
 `
 
-const YouTubeIcon = styled(SocialIcon)`
-  &:hover {
-    background: #ff0000;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
-  }
-`
+const YouTubeIcon = styled(SocialIcon)``
 
-const TwitterIcon = styled(SocialIcon)`
-  &:hover {
-    background: #000000;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-`
+const TwitterIcon = styled(SocialIcon)``
 
 const RequestButton = styled.button`
   padding: 10px 24px;
