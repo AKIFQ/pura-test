@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Navbar } from './components/layout/Navbar'
 import { Home } from './components/pages/Home'
-import { News } from './components/pages/News'
+import News from './components/pages/News'
 import { Contact } from './components/pages/Contact'
 
 function App() {
