@@ -146,7 +146,7 @@ const SubscribeLink = styled.a`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: ${theme.colors.primaryDark};
+    background: ${theme.colors.white};
     transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: -1;
   }
@@ -162,9 +162,10 @@ const SubscribeLink = styled.a`
 
   &:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 24px rgba(91, 58, 115, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     letter-spacing: 0.15em;
     padding-right: 32px;
+    color: ${theme.colors.dark};
     
     &::before {
       left: 0;
@@ -173,6 +174,7 @@ const SubscribeLink = styled.a`
     &::after {
       opacity: 1;
       transform: translateX(0);
+      color: ${theme.colors.dark};
     }
   }
 
