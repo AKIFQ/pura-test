@@ -95,8 +95,7 @@ const Description = styled.p`
 
 const SubscribeButton = styled.a`
   position: relative;
-  background: url('/brush-button.png') no-repeat center center;
-  background-size: 100% 100%;
+  background: ${theme.colors.dark};
   color: ${theme.colors.white};
   border: none;
   padding: 24px 60px;
@@ -106,27 +105,64 @@ const SubscribeButton = styled.a`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  box-shadow: none;
+  overflow: hidden;
+  clip-path: polygon(
+    0% 15%, 2% 8%, 5% 3%, 10% 0%, 15% 2%, 20% 0%, 25% 3%, 30% 1%, 
+    35% 0%, 40% 2%, 45% 0%, 50% 1%, 55% 0%, 60% 2%, 65% 0%, 70% 1%, 
+    75% 0%, 80% 3%, 85% 0%, 90% 2%, 95% 3%, 98% 8%, 100% 15%,
+    100% 85%, 98% 92%, 95% 97%, 90% 100%, 85% 98%, 80% 100%, 75% 97%, 
+    70% 100%, 65% 99%, 60% 100%, 55% 98%, 50% 100%, 45% 99%, 40% 100%, 
+    35% 98%, 30% 100%, 25% 97%, 20% 100%, 15% 98%, 10% 100%, 5% 97%, 
+    2% 92%, 0% 85%
+  );
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: ${theme.colors.white};
+    transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 0;
+  }
 
   &::after {
     content: '→';
     font-size: 24px;
-    transition: transform 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    transform: translateX(-10px);
   }
 
   &:hover {
-    filter: brightness(1.1);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: ${theme.colors.dark};
+    letter-spacing: 0.12em;
+    padding-right: 70px;
+    
+    &::before {
+      left: 0;
+    }
+    
+    &::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
   
-  &:hover::after {
-    transform: translateX(4px);
+  &:active {
+    transform: translateY(-2px) scale(1.02);
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
