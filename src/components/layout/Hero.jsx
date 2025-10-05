@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom'
 import { theme } from '../../styles/theme'
 
 const HeroContainer = styled.section`
-  padding: 80px 20px 80px;
+  padding: 120px 20px 120px;
   background: 
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
     url('/botanical-purple-bg.jpg') center center;
   background-size: cover;
   background-attachment: fixed;
   position: relative;
   overflow: visible;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 100px 40px 100px;
+    padding: 140px 40px 140px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 120px 60px 120px;
+    padding: 160px 60px 160px;
   }
 `
 
