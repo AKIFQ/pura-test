@@ -137,28 +137,61 @@ const SearchInputWrapper = styled.div`
   flex: 1;
 `
 
-const FilterSelect = styled.select`
-  padding: 16px 20px;
-  border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 24px;
+const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
   background: ${theme.colors.gray[50]};
-  color: ${theme.colors.text.primary};
-  font-size: 14px;
-  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 500;
-  outline: none;
-  appearance: none;
-  cursor: pointer;
-  min-width: 140px;
+  border: 2px solid ${theme.colors.gray[300]};
+  border-radius: 16px;
+  padding: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+`
 
-  &:focus {
-    border-color: ${theme.colors.primary};
-    background: white;
-    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
-    transform: translateY(-2px);
+const FilterTitle = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
+  color: ${theme.colors.text.primary};
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+`
+
+const CheckboxGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`
+
+const CheckboxItem = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 0;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
+  color: ${theme.colors.text.primary};
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${theme.colors.primary};
   }
+`
+
+const Checkbox = styled.input`
+  width: 14px;
+  height: 14px;
+  accent-color: ${theme.colors.primary};
+  cursor: pointer;
+`
+
+const CheckboxLabel = styled.span`
+  font-size: 13px;
+  font-weight: 500;
 `
 
 const SearchInput = styled.input`
@@ -407,15 +440,28 @@ const newsData = {
 
 const News = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [categoryFilter, setCategoryFilter] = useState('all');
+  const [selectedCategories, setSelectedCategories] = useState({
+    thc: true,
+    cbd: true,
+    'global-investor': true,
+    medical: true
+  });
 
-  // Filter news data based on search term and category filter
+  // Handle category checkbox changes
+  const handleCategoryChange = (category) => {
+    setSelectedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
+
+  // Filter news data based on search term and selected categories
   const filteredData = Object.entries(newsData).reduce((acc, [date, categories]) => {
     const filteredCategories = {};
     
     Object.entries(categories).forEach(([category, articles]) => {
-      // Apply category filter
-      if (categoryFilter !== 'all' && categoryFilter !== category) {
+      // Apply category filter - only show selected categories
+      if (!selectedCategories[category]) {
         return;
       }
       
@@ -462,16 +508,43 @@ const News = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </SearchInputWrapper>
-            <FilterSelect
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-            >
-              <option value="all">All Categories</option>
-              <option value="thc">THC</option>
-              <option value="cbd">CBD</option>
-              <option value="global-investor">Global Investor</option>
-              <option value="medical">Medical</option>
-            </FilterSelect>
+            <FilterContainer>
+              <FilterTitle>Filter Categories</FilterTitle>
+              <CheckboxGroup>
+                <CheckboxItem>
+                  <Checkbox
+                    type="checkbox"
+                    checked={selectedCategories.thc}
+                    onChange={() => handleCategoryChange('thc')}
+                  />
+                  <CheckboxLabel>THC</CheckboxLabel>
+                </CheckboxItem>
+                <CheckboxItem>
+                  <Checkbox
+                    type="checkbox"
+                    checked={selectedCategories.cbd}
+                    onChange={() => handleCategoryChange('cbd')}
+                  />
+                  <CheckboxLabel>CBD</CheckboxLabel>
+                </CheckboxItem>
+                <CheckboxItem>
+                  <Checkbox
+                    type="checkbox"
+                    checked={selectedCategories['global-investor']}
+                    onChange={() => handleCategoryChange('global-investor')}
+                  />
+                  <CheckboxLabel>Global Investor</CheckboxLabel>
+                </CheckboxItem>
+                <CheckboxItem>
+                  <Checkbox
+                    type="checkbox"
+                    checked={selectedCategories.medical}
+                    onChange={() => handleCategoryChange('medical')}
+                  />
+                  <CheckboxLabel>Medical</CheckboxLabel>
+                </CheckboxItem>
+              </CheckboxGroup>
+            </FilterContainer>
           </SearchWrapper>
         </SearchContainer>
 
