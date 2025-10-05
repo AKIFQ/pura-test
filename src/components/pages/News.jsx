@@ -117,8 +117,8 @@ const FilterButton = styled.button`
 
 const SearchContainer = styled.div`
   display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
+  justify-content: flex-start;
+  margin-bottom: 32px;
   position: relative;
   z-index: 10;
 `
@@ -126,10 +126,10 @@ const SearchContainer = styled.div`
 const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   display: flex;
-  gap: 12px;
-  align-items: center;
+  gap: 16px;
+  align-items: flex-start;
 `
 
 const SearchInputWrapper = styled.div`
@@ -141,12 +141,13 @@ const FilterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 180px;
+  min-width: 160px;
   background: ${theme.colors.gray[50]};
   border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 `
 
 const FilterTitle = styled.div`
@@ -195,11 +196,11 @@ const CheckboxLabel = styled.span`
 `
 
 const SearchInput = styled.input`
-  padding: 16px 24px 16px 52px;
+  padding: 14px 20px 14px 48px;
   border: 2px solid ${theme.colors.gray[300]};
-  border-radius: 24px;
+  border-radius: 12px;
   width: 100%;
-  font-size: 16px;
+  font-size: 15px;
   background: ${theme.colors.gray[50]};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
@@ -211,7 +212,7 @@ const SearchInput = styled.input`
     border-color: ${theme.colors.primary};
     background: white;
     box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
 
   &::placeholder {
@@ -222,11 +223,11 @@ const SearchInput = styled.input`
 
 const SearchIcon = styled.div`
   position: absolute;
-  left: 18px;
+  left: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: ${theme.colors.primary};
-  font-size: 18px;
+  font-size: 16px;
   opacity: 0.8;
   pointer-events: none;
 `
