@@ -324,7 +324,7 @@ const AboutContact = () => {
           </AboutSection>
 
           <ContactSection>
-            <SectionTitle>Contact Us & Contact</SectionTitle>
+            <SectionTitle>Contact Us</SectionTitle>
             <Form onSubmit={handleSubmit}>
               <Input
                 type="text"
