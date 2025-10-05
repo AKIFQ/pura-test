@@ -29,7 +29,7 @@ const LogoText = styled.div`
   font-size: 28px;
   font-weight: 700;
   color: ${theme.colors.dark};
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Zodiak', Georgia, serif;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   transition: all 0.2s ease;

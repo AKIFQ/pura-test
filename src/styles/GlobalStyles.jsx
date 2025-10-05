@@ -1,5 +1,6 @@
 import { Global, css } from '@emotion/react'
 import { theme } from './theme'
+import './fonts.css'
 
 export const GlobalStyles = () => (
   <Global
@@ -15,7 +16,7 @@ export const GlobalStyles = () => (
       }
 
       body {
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        font-family: 'Zodiak', Georgia, serif;
         color: ${theme.colors.text.primary};
         background-color: ${theme.colors.background};
         line-height: 1.6;

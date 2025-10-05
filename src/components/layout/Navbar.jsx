@@ -63,7 +63,7 @@ const NavLinks = styled.div`
 `
 
 const NavLink = styled(Link)`
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Zodiak', Georgia, serif;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
@@ -123,7 +123,7 @@ const SocialIcons = styled.div`
 `
 
 const SubscribeLink = styled.a`
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Zodiak', Georgia, serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
