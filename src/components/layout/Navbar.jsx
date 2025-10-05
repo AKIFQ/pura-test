@@ -17,8 +17,8 @@ const NavbarContainer = styled.nav`
   z-index: 1000;
   padding: 20px 20px;
   background: ${theme.colors.white};
-  border-bottom: 4px solid ${theme.colors.dark};
-  transition: none;
+  border-bottom: 3px solid ${theme.colors.dark};
+  transition: all 0.2s ease;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 24px 32px;
@@ -48,19 +48,19 @@ const NavLinks = styled.div`
 const NavLink = styled(Link)`
   ${theme.typography.nav};
   color: ${theme.colors.dark};
-  transition: none;
+  transition: all 0.2s ease;
   text-decoration: none;
   position: relative;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -6px;
+    bottom: -4px;
     left: 0;
     width: 0;
-    height: 4px;
+    height: 2px;
     background: ${theme.colors.primaryDark};
-    transition: none;
+    transition: width 0.2s ease;
   }
 
   &:hover {

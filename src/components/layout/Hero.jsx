@@ -3,66 +3,56 @@ import { Link } from 'react-router-dom'
 import { theme } from '../../styles/theme'
 
 const HeroContainer = styled.section`
-  padding: 40px 20px 80px 20px;
+  padding: 80px 20px 80px;
   background: ${theme.colors.white};
   position: relative;
   overflow: visible;
   min-height: 90vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
-  padding-top: 12%;
   
-  /* Vertical rule for visual tension */
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 20%;
-    width: 1px;
-    height: 100%;
-    background: ${theme.colors.dark};
-    opacity: 0.15;
-    z-index: 1;
-  }
-  
-  /* Large purple paint stroke behind text */
-  &::after {
-    content: '';
-    position: absolute;
-    top: 15%;
-    right: -5%;
-    width: 800px;
-    height: 600px;
-    background: url('/brush-button.png') no-repeat center center;
-    background-size: contain;
-    opacity: 0.12;
-    transform: rotate(-8deg);
+    top: -5%;
+    right: 5%;
+    width: 400px;
+    height: 400px;
+    background: ${theme.colors.primaryDark};
+    opacity: 0.08;
+    clip-path: polygon(
+      5% 10%, 10% 5%, 20% 8%, 30% 3%, 40% 7%, 50% 2%,
+      60% 6%, 70% 4%, 80% 8%, 90% 5%, 95% 10%,
+      98% 20%, 95% 30%, 97% 40%, 93% 50%, 96% 60%,
+      94% 70%, 97% 80%, 92% 90%, 88% 95%,
+      80% 92%, 70% 96%, 60% 94%, 50% 98%, 40% 93%,
+      30% 97%, 20% 92%, 10% 95%, 5% 88%,
+      2% 80%, 5% 70%, 3% 60%, 7% 50%, 4% 40%,
+      6% 30%, 3% 20%, 8% 10%
+    );
     z-index: 0;
-    filter: hue-rotate(270deg);
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 60px 40px 100px;
-    padding-top: 12%;
+    padding: 100px 40px 100px;
     
-    &::after {
-      width: 1000px;
-      height: 700px;
-      top: 10%;
-      right: -8%;
+    &::before {
+      width: 500px;
+      height: 500px;
+      top: -8%;
+      right: 8%;
     }
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 80px 60px 120px;
-    padding-top: 12%;
+    padding: 120px 60px 120px;
     
-    &::after {
-      width: 1200px;
-      height: 800px;
-      top: 8%;
-      right: -10%;
+    &::before {
+      width: 600px;
+      height: 600px;
+      top: -10%;
+      right: 10%;
     }
   }
 `
@@ -70,19 +60,16 @@ const HeroContainer = styled.section`
 const HeroContent = styled.div`
   max-width: 900px;
   margin: 0;
-  margin-left: 15%;
   text-align: left;
   position: relative;
   z-index: 2;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     max-width: 1000px;
-    margin-left: 15%;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     max-width: 1100px;
-    margin-left: 15%;
   }
 `
 
@@ -118,21 +105,22 @@ const Title = styled.h1`
 const Description = styled.p`
   color: ${theme.colors.text.secondary};
   margin-bottom: 50px;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.8;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   max-width: 600px;
+  text-shadow: none;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     margin-bottom: 60px;
-    font-size: 20px;
+    font-size: 18px;
     max-width: 650px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     margin-bottom: 70px;
-    font-size: 22px;
+    font-size: 20px;
     max-width: 700px;
   }
 `
@@ -150,7 +138,7 @@ const SubscribeButton = styled.a`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: none;
+  transition: all 0.2s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -160,24 +148,17 @@ const SubscribeButton = styled.a`
   &::after {
     content: '→';
     font-size: 24px;
-    transition: none;
+    transition: transform 0.2s ease;
     position: relative;
     z-index: 1;
   }
 
   &:hover {
-    transform: rotate(5deg) translateX(3px);
-    font-style: italic;
+    filter: brightness(1.1);
   }
   
   &:hover::after {
     transform: translateX(4px);
-  }
-  
-  &:active {
-    transform: translateY(8px);
-    filter: invert(1);
-    color: ${theme.colors.primaryDark};
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
