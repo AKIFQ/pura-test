@@ -8,25 +8,30 @@ const LogoWrapper = styled(Link, {
 })`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
 `;
 
 const LogoImage = styled.img`
-  height: 34px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   transition: all 0.2s ease;
 `;
 
 const LogoText = styled.div`
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
   color: ${theme.colors.dark};
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   transition: all 0.2s ease;
 `;
 

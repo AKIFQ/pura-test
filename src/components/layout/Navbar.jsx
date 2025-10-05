@@ -15,19 +15,34 @@ const NavbarContainer = styled.nav`
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 20px 20px;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid ${theme.colors.dark};
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      ${theme.colors.primaryDark} 0%, 
+      ${theme.colors.primaryDark} 30%, 
+      transparent 30%, 
+      transparent 100%
+    );
+  }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 20px 32px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 22px 40px;
+    padding: 22px 48px;
   }
 `
 
@@ -48,25 +63,30 @@ const NavLinks = styled.div`
 `
 
 const NavLink = styled(Link)`
-  ${theme.typography.nav};
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   color: ${theme.colors.dark};
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   text-decoration: none;
   position: relative;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+    bottom: -6px;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 3px;
     background: ${theme.colors.primaryDark};
-    transition: width 0.2s ease;
+    transition: width 0.15s ease;
   }
 
   &:hover {
     color: ${theme.colors.primaryDark};
+    letter-spacing: 0.18em;
     
     &::after {
       width: 100%;
@@ -101,19 +121,36 @@ const SubscribeLink = styled.a`
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   color: ${theme.colors.white};
   background: ${theme.colors.dark};
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 2px;
+  padding: 12px 24px;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: ${theme.colors.primaryDark};
+    transition: left 0.3s ease;
+    z-index: -1;
+  }
 
   &:hover {
-    background: ${theme.colors.primaryDark};
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    
+    &::before {
+      left: 0;
+    }
   }
 `
 
