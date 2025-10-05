@@ -69,7 +69,7 @@ const NavLink = styled(Link)`
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: ${theme.colors.dark};
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   text-decoration: none;
   position: relative;
 
@@ -77,20 +77,26 @@ const NavLink = styled(Link)`
     content: '';
     position: absolute;
     bottom: -6px;
-    left: 0;
+    left: 50%;
     width: 0;
     height: 3px;
     background: ${theme.colors.primaryDark};
-    transition: width 0.15s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: translateX(-50%);
   }
 
   &:hover {
     color: ${theme.colors.primaryDark};
     letter-spacing: 0.18em;
+    transform: translateY(-2px);
     
     &::after {
       width: 100%;
     }
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 `
 
@@ -125,12 +131,13 @@ const SubscribeLink = styled.a`
   color: ${theme.colors.white};
   background: ${theme.colors.dark};
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   padding: 12px 24px;
   border-radius: 0;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 
   &::before {
     content: '';
@@ -140,17 +147,37 @@ const SubscribeLink = styled.a`
     width: 100%;
     height: 100%;
     background: ${theme.colors.primaryDark};
-    transition: left 0.3s ease;
+    transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     z-index: -1;
   }
 
+  &::after {
+    content: '→';
+    position: absolute;
+    right: 12px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(91, 58, 115, 0.4);
+    letter-spacing: 0.15em;
+    padding-right: 32px;
     
     &::before {
       left: 0;
     }
+    
+    &::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(0.98);
   }
 `
 
@@ -161,17 +188,42 @@ const SocialIcon = styled.a`
   width: 36px;
   height: 36px;
   color: ${theme.colors.dark};
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   text-decoration: none;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: ${theme.colors.primaryDark};
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: -1;
+  }
 
   &:hover {
-    color: ${theme.colors.primaryDark};
-    transform: scale(1.15);
+    color: ${theme.colors.white};
+    transform: scale(1.2) rotate(5deg);
+    
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &:active {
+    transform: scale(1.1) rotate(0deg);
   }
 
   svg {
     width: 20px;
     height: 20px;
+    position: relative;
+    z-index: 1;
   }
 `
 
