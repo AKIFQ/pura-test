@@ -49,8 +49,8 @@ const NewsHeader = styled.div`
 const Title = styled.h1`
   font-size: 36px;
   line-height: 1.2;
-  font-weight: 800;
-  font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  font-weight: 400;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   color: ${theme.colors.dark};
   text-transform: uppercase;
   margin-bottom: 16px;
@@ -74,7 +74,7 @@ const Subtitle = styled.p`
   margin-bottom: 40px;
   max-width: 700px;
   font-weight: 400;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   position: relative;
   z-index: 10;
   
@@ -182,7 +182,7 @@ const DateSection = styled.div`
 const DateHeader = styled.h3`
   font-size: 18px;
   font-weight: 400;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   color: ${theme.colors.text.primary};
   margin-bottom: 12px;
   padding-bottom: 6px;
@@ -198,13 +198,13 @@ const ColumnHeaders = styled.div`
 
 const ColumnHeader = styled.div`
   text-align: center;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 11px;
   padding: 10px 8px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   position: relative;
   border-radius: 4px;
   

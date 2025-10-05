@@ -53,8 +53,8 @@ const Right = styled.div``
 const Title = styled.h2`
   font-size: 28px;
   line-height: 1.2;
-  font-weight: 800;
-  font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  font-weight: 400;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: ${theme.colors.text.primary};
