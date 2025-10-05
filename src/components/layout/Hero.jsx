@@ -95,84 +95,55 @@ const Description = styled.p`
 
 const SubscribeButton = styled.a`
   position: relative;
-  background: ${theme.colors.dark};
-  color: ${theme.colors.white};
-  border: none;
-  padding: 24px 60px;
-  font-size: 16px;
-  font-weight: 400;
+  background: ${theme.colors.white};
+  color: ${theme.colors.dark};
+  border: 2px solid ${theme.colors.white};
+  padding: 18px 48px;
+  font-size: 15px;
+  font-weight: 500;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.3s ease;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 12px;
   overflow: hidden;
-  clip-path: polygon(
-    0% 15%, 2% 8%, 5% 3%, 10% 0%, 15% 2%, 20% 0%, 25% 3%, 30% 1%, 
-    35% 0%, 40% 2%, 45% 0%, 50% 1%, 55% 0%, 60% 2%, 65% 0%, 70% 1%, 
-    75% 0%, 80% 3%, 85% 0%, 90% 2%, 95% 3%, 98% 8%, 100% 15%,
-    100% 85%, 98% 92%, 95% 97%, 90% 100%, 85% 98%, 80% 100%, 75% 97%, 
-    70% 100%, 65% 99%, 60% 100%, 55% 98%, 50% 100%, 45% 99%, 40% 100%, 
-    35% 98%, 30% 100%, 25% 97%, 20% 100%, 15% 98%, 10% 100%, 5% 97%, 
-    2% 92%, 0% 85%
-  );
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: ${theme.colors.white};
-    transition: left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 0;
-  }
 
   &::after {
     content: '→';
-    font-size: 24px;
-    transition: all 0.3s ease;
+    font-size: 20px;
+    transition: transform 0.3s ease;
     position: relative;
-    z-index: 1;
-    opacity: 0;
-    transform: translateX(-10px);
   }
 
   &:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    color: ${theme.colors.dark};
-    letter-spacing: 0.12em;
-    padding-right: 70px;
-    
-    &::before {
-      left: 0;
-    }
+    background: transparent;
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.white};
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
     
     &::after {
-      opacity: 1;
-      transform: translateX(0);
+      transform: translateX(6px);
     }
   }
   
   &:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(0);
   }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 17px;
-    padding: 26px 64px;
+    font-size: 16px;
+    padding: 20px 52px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 18px;
-    padding: 28px 68px;
+    font-size: 17px;
+    padding: 22px 56px;
   }
 `
 
