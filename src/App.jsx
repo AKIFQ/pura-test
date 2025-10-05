@@ -3,7 +3,7 @@ import { GlobalStyles } from './styles/GlobalStyles'
 import { Navbar } from './components/layout/Navbar'
 import { Home } from './components/pages/Home'
 import News from './components/pages/News'
-import { Contact } from './components/pages/Contact'
+import AboutContact from './components/pages/AboutContact'
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<AboutContact />} />
       </Routes>
     </Router>
   )

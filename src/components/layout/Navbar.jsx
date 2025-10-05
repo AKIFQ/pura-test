@@ -328,17 +328,6 @@ export const Navbar = () => {
     }
   }
 
-  const handleContactClick = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      // Already on home page, just scroll
-      scrollToSection('contact')
-    } else {
-      // Navigate to home page and then scroll
-      navigate('/')
-      setTimeout(() => scrollToSection('contact'), 100)
-    }
-  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -372,7 +361,7 @@ export const Navbar = () => {
       
       <RightLinks isScrolled={isScrolled}>
         <NavLink to="/news" isScrolled={isScrolled}>News</NavLink>
-        <NavLink to="/contact" isScrolled={isScrolled}>Contact</NavLink>
+        <NavLink to="/about" isScrolled={isScrolled}>About</NavLink>
         <SubscribeLink 
           href="#subscribe" 
           isScrolled={isScrolled}
@@ -413,7 +402,7 @@ export const Navbar = () => {
       
       <MobileMenu isOpen={isMobileMenuOpen}>
         <NavLink to="/news">News</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/about">About</NavLink>
       </MobileMenu>
     </NavbarContainer>
   )
