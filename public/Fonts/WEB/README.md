@@ -2,44 +2,37 @@
 Follow these simple Steps.
 
 ## 1.
-Put `zodiak/` Folder into a Folder called `fonts/`.
+Put `chillax/` Folder into a Folder called `fonts/`.
 
 ## 2.
-Put `zodiak.css` into your `css/` Folder.
+Put `chillax.css` into your `css/` Folder.
 
 ## 3. (Optional)
-You may adapt the `url('path')` in `zodiak.css` depends on your Website Filesystem.
+You may adapt the `url('path')` in `chillax.css` depends on your Website Filesystem.
 
 ## 4.
-Import `zodiak.css` at the top of you main Stylesheet.
+Import `chillax.css` at the top of you main Stylesheet.
 
 ```
-@import url('zodiak.css');
+@import url('chillax.css');
 ```
 
 ## 5.
 You are now ready to use the following Rules in your CSS to specify each Font Style:
 ```
-font-family: Zodiak-Thin;
-font-family: Zodiak-ThinItalic;
-font-family: Zodiak-Light;
-font-family: Zodiak-LightItalic;
-font-family: Zodiak-Regular;
-font-family: Zodiak-Italic;
-font-family: Zodiak-Bold;
-font-family: Zodiak-BoldItalic;
-font-family: Zodiak-Extrabold;
-font-family: Zodiak-ExtraboldItalic;
-font-family: Zodiak-Black;
-font-family: Zodiak-BlackItalic;
-font-family: Zodiak-Variable;
-font-family: Zodiak-VariableItalic;
+font-family: Chillax-Extralight;
+font-family: Chillax-Light;
+font-family: Chillax-Regular;
+font-family: Chillax-Medium;
+font-family: Chillax-Semibold;
+font-family: Chillax-Bold;
+font-family: Chillax-Variable;
 
 ```
 ## 6. (Optional)
 Use `font-variation-settings` rule to controll axes of variable fonts:
-wght 900.0
+wght 700.0
 
 Available axes:
-'wght' (range from 100.0 to 900.0
+'wght' (range from 200.0 to 700.0
 

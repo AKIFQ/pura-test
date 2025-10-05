@@ -45,11 +45,11 @@ const Title = styled.h1`
   margin-bottom: 24px;
   font-size: 32px;
   line-height: 1.2;
-  font-weight: 800;
+  font-weight: 700;
   color: ${theme.colors.white};
   text-transform: uppercase;
   letter-spacing: -0.02em;
-  font-family: 'Zodiak', Georgia, serif;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   
   @media (min-width: ${theme.breakpoints.tablet}) {
@@ -75,7 +75,7 @@ const Description = styled.p`
   margin-bottom: 32px;
   font-size: 16px;
   line-height: 1.6;
-  font-family: 'Zodiak', Georgia, serif;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   max-width: 600px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -101,8 +101,8 @@ const SubscribeButton = styled.a`
   border: none;
   padding: 24px 60px;
   font-size: 16px;
-  font-weight: 700;
-  font-family: 'Zodiak', Georgia, serif;
+  font-weight: 600;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;

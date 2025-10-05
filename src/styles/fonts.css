@@ -1,76 +1,76 @@
 /**
- * Zodiak Font Family
- * A beautiful editorial serif typeface
+ * Chillax Font Family
+ * A modern geometric sans-serif typeface
  */
 
 /* Variable Font (Recommended - single file for all weights) */
 @font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Variable.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Variable.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Variable.ttf') format('truetype');
-  font-weight: 100 900;
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Variable.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Variable.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Variable.ttf') format('truetype');
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* Static Fonts (Fallback for older browsers) */
+@font-face {
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Extralight.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Extralight.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Extralight.ttf') format('truetype');
+  font-weight: 200;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-VariableItalic.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-VariableItalic.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-VariableItalic.ttf') format('truetype');
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: italic;
-}
-
-/* Static Fonts (Fallback for older browsers) */
-@font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Light.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Light.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Light.ttf') format('truetype');
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Light.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Light.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Light.ttf') format('truetype');
   font-weight: 300;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Regular.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Regular.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Regular.ttf') format('truetype');
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Regular.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Regular.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Bold.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Bold.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Bold.ttf') format('truetype');
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Medium.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Medium.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Semibold.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Semibold.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Chillax';
+  src: url('/Fonts/WEB/fonts/Chillax-Bold.woff2') format('woff2'),
+       url('/Fonts/WEB/fonts/Chillax-Bold.woff') format('woff'),
+       url('/Fonts/WEB/fonts/Chillax-Bold.ttf') format('truetype');
   font-weight: 700;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Extrabold.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Extrabold.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Extrabold.ttf') format('truetype');
-  font-weight: 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Zodiak';
-  src: url('/Fonts/WEB/fonts/Zodiak-Black.woff2') format('woff2'),
-       url('/Fonts/WEB/fonts/Zodiak-Black.woff') format('woff'),
-       url('/Fonts/WEB/fonts/Zodiak-Black.ttf') format('truetype');
-  font-weight: 900;
   font-display: swap;
   font-style: normal;
 }

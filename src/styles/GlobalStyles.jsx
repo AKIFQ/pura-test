@@ -16,7 +16,7 @@ export const GlobalStyles = () => (
       }
 
       body {
-        font-family: 'Zodiak', Georgia, serif;
+        font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
         color: ${theme.colors.text.primary};
         background-color: ${theme.colors.background};
         line-height: 1.6;
