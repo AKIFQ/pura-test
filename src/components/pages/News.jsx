@@ -28,22 +28,6 @@ const NewsHeader = styled.div`
   margin-bottom: 40px;
   position: relative;
   padding-left: 0;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120px;
-    height: 100%;
-    background: ${theme.colors.dark};
-    opacity: 0.05;
-    clip-path: polygon(
-      10% 0%, 20% 2%, 30% 1%, 40% 3%, 50% 1%, 60% 2%, 70% 1%, 80% 3%, 90% 1%, 100% 0%,
-      98% 100%, 90% 99%, 80% 100%, 70% 98%, 60% 100%, 50% 99%, 40% 100%, 30% 98%, 20% 100%, 10% 99%, 0% 100%
-    );
-    z-index: 0;
-  }
 `
 
 const Title = styled.h1`
@@ -55,8 +39,6 @@ const Title = styled.h1`
   text-transform: uppercase;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
-  position: relative;
-  z-index: 10;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     font-size: 48px;
@@ -75,8 +57,6 @@ const Subtitle = styled.p`
   max-width: 700px;
   font-weight: 400;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
-  position: relative;
-  z-index: 10;
   
   @media (min-width: ${theme.breakpoints.tablet}) {
     font-size: 16px;
