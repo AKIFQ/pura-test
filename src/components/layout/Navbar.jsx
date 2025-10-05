@@ -16,16 +16,18 @@ const NavbarContainer = styled.nav`
   right: 0;
   z-index: 1000;
   padding: 20px 20px;
-  background: ${theme.colors.white};
-  border-bottom: 3px solid ${theme.colors.dark};
-  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    padding: 24px 32px;
+    padding: 20px 32px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    padding: 28px 40px;
+    padding: 22px 40px;
   }
 `
 
@@ -96,20 +98,22 @@ const SocialIcons = styled.div`
 
 const SubscribeLink = styled.a`
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: ${theme.colors.white};
-  background: url('/brush-button.png') no-repeat center center;
-  background-size: 100% 100%;
+  background: ${theme.colors.dark};
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
-  padding: 12px 24px;
+  padding: 10px 20px;
+  border-radius: 2px;
 
   &:hover {
-    filter: brightness(1.1);
+    background: ${theme.colors.primaryDark};
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 `
 
