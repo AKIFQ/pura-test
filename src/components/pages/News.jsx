@@ -199,6 +199,55 @@ const CheckboxLabel = styled.span`
   font-weight: 500;
 `
 
+const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid ${theme.colors.gray[200]};
+`
+
+const PaginationButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid ${theme.colors.gray[300]};
+  border-radius: 4px;
+  background: ${props => props.active ? theme.colors.primary : theme.colors.white};
+  color: ${props => props.active ? theme.colors.white : theme.colors.text.primary};
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: ${props => props.active ? theme.colors.primaryDark : theme.colors.gray[50]};
+    border-color: ${theme.colors.primary};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`
+
+const PaginationDots = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  color: ${theme.colors.text.secondary};
+  font-size: 14px;
+  font-weight: 500;
+`
+
 const SearchInput = styled.input`
   padding: 14px 20px 14px 48px;
   border: 2px solid ${theme.colors.gray[300]};
@@ -451,6 +500,8 @@ const News = () => {
     'global-investor': true,
     medical: true
   });
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3; // Show 3 dates per page
 
   // Handle category checkbox changes
   const handleCategoryChange = (category) => {
@@ -458,6 +509,13 @@ const News = () => {
       ...prev,
       [category]: !prev[category]
     }));
+    setCurrentPage(1); // Reset to first page when filters change
+  };
+
+  // Handle search term changes
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // Reset to first page when search changes
   };
 
   // Filter news data based on search term and selected categories
@@ -489,6 +547,51 @@ const News = () => {
     return acc;
   }, {});
 
+  // Pagination logic
+  const totalItems = Object.keys(filteredData).length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = Object.entries(filteredData)
+    .sort(([a], [b]) => new Date(b) - new Date(a))
+    .slice(startIndex, endIndex);
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+    
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+    
+    return pages;
+  };
+
   return (
     <NewsContainer>
       <NewsContent>
@@ -510,7 +613,7 @@ const News = () => {
                 type="text"
                 placeholder="Search articles..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
               />
             </SearchInputWrapper>
             <FilterContainer>
@@ -553,9 +656,7 @@ const News = () => {
           </SearchWrapper>
         </SearchContainer>
 
-        {Object.entries(filteredData)
-          .sort(([a], [b]) => new Date(b) - new Date(a))
-          .map(([date, categories]) => (
+        {currentPageData.map(([date, categories]) => (
           <DateSection key={date}>
             <DateHeader>{date}</DateHeader>
             
@@ -598,6 +699,38 @@ const News = () => {
             </NewsGrid>
           </DateSection>
         ))}
+
+        {totalPages > 1 && (
+          <PaginationContainer>
+            <PaginationButton
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+            >
+              ←
+            </PaginationButton>
+            
+            {getPageNumbers().map((page, index) => (
+              page === '...' ? (
+                <PaginationDots key={`dots-${index}`}>...</PaginationDots>
+              ) : (
+                <PaginationButton
+                  key={page}
+                  active={currentPage === page}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </PaginationButton>
+              )
+            ))}
+            
+            <PaginationButton
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+            >
+              →
+            </PaginationButton>
+          </PaginationContainer>
+        )}
       </NewsContent>
     </NewsContainer>
   );
