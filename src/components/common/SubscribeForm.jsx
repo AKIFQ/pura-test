@@ -420,7 +420,8 @@ export const SubscribeForm = () => {
     newsletters: {
       thc: false,
       cbd: false,
-      globalInvestor: false
+      globalInvestor: false,
+      medical: false
     }
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -467,6 +468,12 @@ export const SubscribeForm = () => {
         "🗽 NY Court Strikes Equity Program",
         "💰 Cannabis Investment Trends",
         "📊 Market Analysis Q4 2024"
+      ],
+      medical: [
+        "🩺 Senate OKs VA Docs Recommending Cannabis",
+        "🧬 New Cannabis Research Studies",
+        "💊 Medical Cannabis Access Expansion",
+        "🏥 Hospital Cannabis Integration Programs"
       ]
     };
     return headlines[newsletterType] || [];
@@ -485,7 +492,8 @@ export const SubscribeForm = () => {
         newsletters: {
           thc: false,
           cbd: false,
-          globalInvestor: false
+          globalInvestor: false,
+          medical: false
         }
       });
       setTimeout(() => setShowSuccess(false), 5000);
@@ -518,7 +526,7 @@ export const SubscribeForm = () => {
               <StatLabel>Active Subscribers</StatLabel>
             </StatItem>
             <StatItem>
-              <StatNumber>3</StatNumber>
+              <StatNumber>4</StatNumber>
               <StatLabel>Newsletter Categories</StatLabel>
             </StatItem>
             <StatItem>
@@ -559,6 +567,16 @@ export const SubscribeForm = () => {
                 <NewsletterName>Global Investor</NewsletterName>
                 <NewsletterDescription>
                   Investment opportunities, market analysis, and financial trends
+                </NewsletterDescription>
+              </NewsletterCard>
+
+              <NewsletterCard 
+                isActive={selectedNewsletter === 'medical'}
+                onClick={() => handleNewsletterSelect('medical')}
+              >
+                <NewsletterName>Medical</NewsletterName>
+                <NewsletterDescription>
+                  Medical cannabis research, therapeutic applications, and healthcare developments
                 </NewsletterDescription>
               </NewsletterCard>
             </NewsletterGrid>
@@ -640,6 +658,18 @@ export const SubscribeForm = () => {
                   <div>
                     <CheckboxLabel>Global Investor Newsletter</CheckboxLabel>
                     <CheckboxDescription>Investment opportunities and market analysis</CheckboxDescription>
+                  </div>
+                </CheckboxItem>
+
+                <CheckboxItem isChecked={formData.newsletters.medical}>
+                  <Checkbox
+                    type="checkbox"
+                    checked={formData.newsletters.medical}
+                    onChange={() => handleNewsletterChange('medical')}
+                  />
+                  <div>
+                    <CheckboxLabel>Medical Newsletter</CheckboxLabel>
+                    <CheckboxDescription>Medical research and healthcare developments</CheckboxDescription>
                   </div>
                 </CheckboxItem>
               </CheckboxGroup>
