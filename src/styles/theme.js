@@ -4,6 +4,9 @@ export const theme = {
     primaryDark: '#4A2C5E',
     dark: '#000000',
     white: '#FFFFFF',
+    beige: '#F5F1E8',
+    yellow: '#FFFF00',
+    red: '#FF0000',
     gray: {
       100: '#F5F5F5',
       200: '#E0E0E0',
@@ -20,7 +23,7 @@ export const theme = {
   typography: {
     h1: {
       fontSize: '64px',
-      lineHeight: '72px',
+      lineHeight: '1.1',
       fontWeight: 800,
       fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
       letterSpacing: '-0.02em',
@@ -28,7 +31,7 @@ export const theme = {
     },
     h2: {
       fontSize: '48px',
-      lineHeight: '56px',
+      lineHeight: '1.1',
       fontWeight: 700,
       fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
       letterSpacing: '-0.01em',
@@ -36,14 +39,14 @@ export const theme = {
     },
     h3: {
       fontSize: '32px',
-      lineHeight: '40px',
+      lineHeight: '1.1',
       fontWeight: 700,
       fontFamily: "'Helvetica Neue', 'Arial Black', sans-serif",
       textTransform: 'uppercase',
     },
     body: {
-      fontSize: '16px',
-      lineHeight: '28px',
+      fontSize: '18px',
+      lineHeight: '1.6',
       fontWeight: 400,
       fontFamily: "'Helvetica Neue', Arial, sans-serif",
     },
