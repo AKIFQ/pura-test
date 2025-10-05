@@ -142,7 +142,8 @@ const Select = styled.select`
 `
 
 const SubmitButton = styled.button`
-  background: ${theme.colors.dark};
+  background: url('/brush-button.png') no-repeat center center;
+  background-size: 100% 100%;
   color: ${theme.colors.white};
   border: none;
   padding: 20px 32px;
@@ -155,46 +156,13 @@ const SubmitButton = styled.button`
   transition: all 0.2s ease;
   white-space: nowrap;
   position: relative;
-  clip-path: polygon(
-    0% 8%, 2% 3%, 5% 1%, 10% 0%, 15% 1%, 20% 2%, 
-    25% 1%, 30% 0%, 35% 1%, 40% 0%, 45% 1%, 50% 0%,
-    55% 1%, 60% 0%, 65% 2%, 70% 1%, 75% 2%, 80% 1%,
-    85% 0%, 90% 2%, 95% 1%, 98% 3%, 100% 8%,
-    100% 92%, 98% 97%, 95% 99%, 90% 100%, 85% 99%,
-    80% 98%, 75% 99%, 70% 100%, 65% 99%, 60% 100%,
-    55% 99%, 50% 100%, 45% 99%, 40% 100%, 35% 99%,
-    30% 100%, 25% 99%, 20% 98%, 15% 99%, 10% 100%,
-    5% 99%, 2% 97%, 0% 92%
-  );
-  
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: 
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(255,255,255,0.03) 2px,
-        rgba(255,255,255,0.03) 4px
-      ),
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(255,255,255,0.02) 2px,
-        rgba(255,255,255,0.02) 4px
-      );
-    pointer-events: none;
-  }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     grid-column: 1 / -1;
   }
 
   &:hover { 
-    background: ${theme.colors.primaryDark};
+    filter: brightness(1.1);
   }
   &:active { 
     transform: scale(0.98); 
