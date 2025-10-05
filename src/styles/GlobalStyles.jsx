@@ -22,7 +22,7 @@ export const GlobalStyles = () => (
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-weight: 400;
+        font-weight: 500;
       }
 
       h1 {

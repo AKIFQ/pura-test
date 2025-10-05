@@ -45,7 +45,7 @@ const Title = styled.h1`
   margin-bottom: 24px;
   font-size: 32px;
   line-height: 1.2;
-  font-weight: 400;
+  font-weight: 500;
   color: ${theme.colors.white};
   text-transform: uppercase;
   letter-spacing: -0.02em;
@@ -76,7 +76,7 @@ const Description = styled.p`
   font-size: 16px;
   line-height: 1.6;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   max-width: 600px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 
@@ -100,7 +100,7 @@ const SubscribeButton = styled.a`
   border: 2px solid ${theme.colors.white};
   padding: 18px 48px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;

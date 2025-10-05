@@ -65,7 +65,7 @@ const NavLinks = styled.div`
 const NavLink = styled(Link)`
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: ${theme.colors.dark};
@@ -125,7 +125,7 @@ const SocialIcons = styled.div`
 const SubscribeLink = styled.a`
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: ${theme.colors.white};

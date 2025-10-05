@@ -27,7 +27,7 @@ const LogoImage = styled.img`
 
 const LogoText = styled.div`
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 500;
   color: ${theme.colors.dark};
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.02em;
