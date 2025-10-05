@@ -25,7 +25,7 @@ const NewsContent = styled.div`
 
 const NewsHeader = styled.div`
   text-align: left;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   position: relative;
   padding-left: 0;
   
@@ -118,7 +118,7 @@ const FilterButton = styled.button`
 const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   position: relative;
   z-index: 10;
 `
@@ -180,13 +180,15 @@ const DateSection = styled.div`
 `
 
 const DateHeader = styled.h3`
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   color: ${theme.colors.text.primary};
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid ${theme.colors.gray[200]};
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid ${theme.colors.gray[300]};
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `
 
 const ColumnHeaders = styled.div`
@@ -194,41 +196,43 @@ const ColumnHeaders = styled.div`
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 12px;
+  margin-left: 0;
+  margin-right: 0;
 `
 
 const ColumnHeader = styled.div`
   text-align: center;
-  font-weight: 400;
-  font-size: 11px;
-  padding: 10px 8px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 12px 8px;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   position: relative;
-  border-radius: 4px;
+  border-radius: 6px;
   
   &.thc,
   &.global-investor {
-    background: ${theme.colors.primaryDark};
+    background: linear-gradient(135deg, ${theme.colors.primaryDark} 0%, ${theme.colors.primary} 100%);
   }
   
   &.cbd,
   &.medical {
-    background: ${theme.colors.dark};
+    background: linear-gradient(135deg, ${theme.colors.dark} 0%, #374151 100%);
   }
 `
 
 const NewsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 16px;
+  margin-bottom: 32px;
   align-items: start;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 12px;
   }
 `
 
@@ -239,13 +243,16 @@ const NewsColumn = styled.div`
 `
 
 const NewsItem = styled.div`
-  padding: 10px 12px;
-  border-radius: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
   background-color: white;
   border: 1px solid ${theme.colors.gray[300]};
   transition: all 0.2s ease;
   cursor: pointer;
   box-shadow: none;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
   border-left: 3px solid ${props => {
     switch(props.category) {
       case 'thc': return theme.colors.primary;
@@ -284,14 +291,17 @@ const NewsItem = styled.div`
 
 const NewsTitle = styled.h4`
   font-size: 12px;
-  line-height: 18px;
+  line-height: 1.4;
   font-weight: 500;
   font-family: 'Inter', sans-serif;
   color: ${theme.colors.text.primary};
   margin: 0;
-  text-align: justify;
-  text-justify: inter-word;
+  text-align: left;
   word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
 
 const NewsDescription = styled.p`
