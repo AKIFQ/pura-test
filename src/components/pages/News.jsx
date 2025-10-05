@@ -126,10 +126,16 @@ const SearchContainer = styled.div`
 const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  gap: 20px;
+  align-items: center;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
 `
 
 const SearchInputWrapper = styled.div`
@@ -139,15 +145,22 @@ const SearchInputWrapper = styled.div`
 
 const FilterContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 160px;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
   background: ${theme.colors.gray[50]};
   border: 2px solid ${theme.colors.gray[300]};
   border-radius: 12px;
-  padding: 12px;
+  padding: 12px 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
+  flex-wrap: wrap;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 `
 
 const FilterTitle = styled.div`
@@ -157,29 +170,40 @@ const FilterTitle = styled.div`
   color: ${theme.colors.text.primary};
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  margin-right: 8px;
+  white-space: nowrap;
 `
 
 const CheckboxGroup = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
 `
 
 const CheckboxItem = styled.label`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 4px 8px;
   font-size: 13px;
   font-weight: 500;
   font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
   color: ${theme.colors.text.primary};
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  white-space: nowrap;
 
   &:hover {
     color: ${theme.colors.primary};
+    background: rgba(139, 92, 246, 0.1);
   }
 `
 
