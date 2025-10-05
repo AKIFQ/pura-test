@@ -21,7 +21,7 @@ export const theme = {
     h1: {
       fontSize: '64px',
       lineHeight: '72px',
-      fontWeight: 700,
+      fontWeight: 400,
       fontFamily: "'Chillax', 'Helvetica Neue', Arial, sans-serif",
       letterSpacing: '-0.02em',
       textTransform: 'uppercase',
@@ -29,7 +29,7 @@ export const theme = {
     h2: {
       fontSize: '48px',
       lineHeight: '56px',
-      fontWeight: 700,
+      fontWeight: 400,
       fontFamily: "'Chillax', 'Helvetica Neue', Arial, sans-serif",
       letterSpacing: '-0.01em',
       textTransform: 'uppercase',
@@ -37,7 +37,7 @@ export const theme = {
     h3: {
       fontSize: '32px',
       lineHeight: '40px',
-      fontWeight: 600,
+      fontWeight: 400,
       fontFamily: "'Chillax', 'Helvetica Neue', Arial, sans-serif",
       textTransform: 'uppercase',
     },
@@ -50,7 +50,7 @@ export const theme = {
     nav: {
       fontSize: '14px',
       lineHeight: '20px',
-      fontWeight: 600,
+      fontWeight: 400,
       fontFamily: "'Chillax', 'Helvetica Neue', Arial, sans-serif",
       textTransform: 'uppercase',
       letterSpacing: '0.1em',
@@ -58,7 +58,7 @@ export const theme = {
     button: {
       fontSize: '14px',
       lineHeight: '24px',
-      fontWeight: 600,
+      fontWeight: 400,
       fontFamily: "'Chillax', 'Helvetica Neue', Arial, sans-serif",
       textTransform: 'uppercase',
       letterSpacing: '0.15em',
