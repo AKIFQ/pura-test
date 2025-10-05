@@ -298,7 +298,7 @@ const AboutContact = () => {
     <AboutContactContainer>
       <AboutContactContent>
         <HeaderSection>
-          <HeaderTitle>About & Contact</HeaderTitle>
+          <HeaderTitle>About</HeaderTitle>
           <HeaderSubtitle>
             Learn more about Purablis and get in touch with our team. We're here to help you stay informed about the latest developments in medicinal alternatives.
           </HeaderSubtitle>
@@ -324,7 +324,7 @@ const AboutContact = () => {
           </AboutSection>
 
           <ContactSection>
-            <SectionTitle>Get In Touch</SectionTitle>
+            <SectionTitle>Contact Us & Contact</SectionTitle>
             <Form onSubmit={handleSubmit}>
               <Input
                 type="text"
