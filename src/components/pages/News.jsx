@@ -126,30 +126,64 @@ const SearchContainer = styled.div`
 const SearchWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 600px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+`
+
+const SearchInputWrapper = styled.div`
+  position: relative;
+  flex: 1;
+`
+
+const FilterSelect = styled.select`
+  padding: 16px 20px;
+  border: 2px solid ${theme.colors.gray[300]};
+  border-radius: 24px;
+  background: ${theme.colors.gray[50]};
+  color: ${theme.colors.text.primary};
+  font-size: 14px;
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: ${theme.colors.primary};
+    background: white;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
+  }
 `
 
 const SearchInput = styled.input`
   padding: 16px 24px 16px 52px;
-  border: 2px solid transparent;
+  border: 2px solid ${theme.colors.gray[300]};
   border-radius: 24px;
   width: 100%;
   font-size: 16px;
-  background: white;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
+  background: ${theme.colors.gray[50]};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Chillax', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500;
   transition: all 0.3s ease;
   
   &:focus {
     outline: none;
     border-color: ${theme.colors.primary};
-    box-shadow: 0 12px 35px rgba(139, 92, 246, 0.15);
-    transform: translateY(-1px);
+    background: white;
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
+    transform: translateY(-2px);
   }
 
   &::placeholder {
     color: ${theme.colors.text.secondary};
-    opacity: 0.6;
+    opacity: 0.8;
   }
 `
 
@@ -158,9 +192,9 @@ const SearchIcon = styled.div`
   left: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: ${theme.colors.text.secondary};
+  color: ${theme.colors.primary};
   font-size: 18px;
-  opacity: 0.6;
+  opacity: 0.8;
   pointer-events: none;
 `
 
@@ -373,25 +407,34 @@ const newsData = {
 
 const News = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('all');
 
-  // Filter news data based on search term
+  // Filter news data based on search term and category filter
   const filteredData = Object.entries(newsData).reduce((acc, [date, categories]) => {
-    if (searchTerm) {
-      const filteredCategories = {};
-      Object.entries(categories).forEach(([category, articles]) => {
-        const filteredArticles = articles.filter(article =>
-          article.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        if (filteredArticles.length > 0) {
-          filteredCategories[category] = filteredArticles;
-        }
-      });
-      if (Object.keys(filteredCategories).length > 0) {
-        acc[date] = filteredCategories;
+    const filteredCategories = {};
+    
+    Object.entries(categories).forEach(([category, articles]) => {
+      // Apply category filter
+      if (categoryFilter !== 'all' && categoryFilter !== category) {
+        return;
       }
-    } else {
-      acc[date] = categories;
+      
+      // Apply search term filter
+      const filteredArticles = searchTerm 
+        ? articles.filter(article =>
+            article.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : articles;
+      
+      if (filteredArticles.length > 0) {
+        filteredCategories[category] = filteredArticles;
+      }
+    });
+    
+    if (Object.keys(filteredCategories).length > 0) {
+      acc[date] = filteredCategories;
     }
+    
     return acc;
   }, {});
 
@@ -408,15 +451,27 @@ const News = () => {
 
         <SearchContainer>
           <SearchWrapper>
-            <SearchIcon>
-              <HiOutlineSearch />
-            </SearchIcon>
-            <SearchInput
-              type="text"
-              placeholder="Search articles..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <SearchInputWrapper>
+              <SearchIcon>
+                <HiOutlineSearch />
+              </SearchIcon>
+              <SearchInput
+                type="text"
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </SearchInputWrapper>
+            <FilterSelect
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+            >
+              <option value="all">All Categories</option>
+              <option value="thc">THC</option>
+              <option value="cbd">CBD</option>
+              <option value="global-investor">Global Investor</option>
+              <option value="medical">Medical</option>
+            </FilterSelect>
           </SearchWrapper>
         </SearchContainer>
 
