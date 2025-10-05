@@ -95,8 +95,8 @@ const Description = styled.p`
 
 const SubscribeButton = styled.a`
   position: relative;
-  background: ${theme.colors.white};
-  color: ${theme.colors.dark};
+  background: transparent;
+  color: ${theme.colors.white};
   border: 2px solid ${theme.colors.white};
   padding: 18px 48px;
   font-size: 15px;
@@ -121,8 +121,8 @@ const SubscribeButton = styled.a`
   }
 
   &:hover {
-    background: transparent;
-    color: ${theme.colors.white};
+    background: ${theme.colors.white};
+    color: ${theme.colors.dark};
     border-color: ${theme.colors.white};
     transform: translateY(-2px);
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
