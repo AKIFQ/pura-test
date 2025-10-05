@@ -4,56 +4,24 @@ import { theme } from '../../styles/theme'
 
 const HeroContainer = styled.section`
   padding: 80px 20px 80px;
-  background: ${theme.colors.white};
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/botanical-purple-bg.jpg') center center;
+  background-size: cover;
+  background-attachment: fixed;
   position: relative;
   overflow: visible;
   min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: -5%;
-    right: 5%;
-    width: 400px;
-    height: 400px;
-    background: ${theme.colors.primaryDark};
-    opacity: 0.08;
-    clip-path: polygon(
-      5% 10%, 10% 5%, 20% 8%, 30% 3%, 40% 7%, 50% 2%,
-      60% 6%, 70% 4%, 80% 8%, 90% 5%, 95% 10%,
-      98% 20%, 95% 30%, 97% 40%, 93% 50%, 96% 60%,
-      94% 70%, 97% 80%, 92% 90%, 88% 95%,
-      80% 92%, 70% 96%, 60% 94%, 50% 98%, 40% 93%,
-      30% 97%, 20% 92%, 10% 95%, 5% 88%,
-      2% 80%, 5% 70%, 3% 60%, 7% 50%, 4% 40%,
-      6% 30%, 3% 20%, 8% 10%
-    );
-    z-index: 0;
-  }
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     padding: 100px 40px 100px;
-    
-    &::before {
-      width: 500px;
-      height: 500px;
-      top: -8%;
-      right: 8%;
-    }
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
     padding: 120px 60px 120px;
-    
-    &::before {
-      width: 600px;
-      height: 600px;
-      top: -10%;
-      right: 10%;
-    }
   }
 `
 
@@ -78,10 +46,11 @@ const Title = styled.h1`
   font-size: 32px;
   line-height: 1.2;
   font-weight: 800;
-  color: ${theme.colors.dark};
+  color: ${theme.colors.white};
   text-transform: uppercase;
   letter-spacing: -0.02em;
   font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   
   @media (min-width: ${theme.breakpoints.tablet}) {
     font-size: 42px;
@@ -94,7 +63,7 @@ const Title = styled.h1`
   }
 
   span {
-    color: ${theme.colors.primaryDark};
+    color: #FFD700;
     font-weight: 800;
     display: block;
     margin-top: 8px;
@@ -102,13 +71,14 @@ const Title = styled.h1`
 `
 
 const Description = styled.p`
-  color: ${theme.colors.text.secondary};
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 32px;
   font-size: 16px;
   line-height: 1.6;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   max-width: 600px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 
   @media (min-width: ${theme.breakpoints.tablet}) {
     margin-bottom: 40px;
