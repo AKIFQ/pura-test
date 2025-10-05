@@ -51,9 +51,18 @@ const Left = styled.div``
 const Right = styled.div``
 
 const Title = styled.h2`
-  ${theme.typography.h2};
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+  font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: ${theme.colors.text.primary};
   margin: 0 0 8px 0;
+  
+  @media (min-width: ${theme.breakpoints.tablet}) {
+    font-size: 32px;
+  }
 `
 
 const Subtitle = styled.p`

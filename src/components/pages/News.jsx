@@ -47,31 +47,31 @@ const NewsHeader = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 56px;
-  line-height: 1.1;
+  font-size: 36px;
+  line-height: 1.2;
   font-weight: 800;
   font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
   color: ${theme.colors.dark};
   text-transform: uppercase;
-  margin-bottom: 24px;
-  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
   position: relative;
   z-index: 10;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 72px;
+    font-size: 48px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 88px;
+    font-size: 56px;
   }
 `
 
 const Subtitle = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.6;
   color: ${theme.colors.text.secondary};
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   max-width: 700px;
   font-weight: 400;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -79,7 +79,7 @@ const Subtitle = styled.p`
   z-index: 10;
   
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 20px;
+    font-size: 16px;
   }
 `
 
@@ -199,30 +199,23 @@ const ColumnHeaders = styled.div`
 const ColumnHeader = styled.div`
   text-align: center;
   font-weight: 700;
-  font-size: 12px;
-  padding: 12px 8px;
+  font-size: 11px;
+  padding: 10px 8px;
   color: white;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   position: relative;
+  border-radius: 4px;
   
   &.thc,
   &.global-investor {
     background: ${theme.colors.primaryDark};
-    clip-path: polygon(
-      0% 15%, 5% 5%, 15% 8%, 25% 3%, 35% 7%, 45% 2%, 55% 6%, 65% 4%, 75% 8%, 85% 5%, 95% 10%, 100% 15%,
-      100% 85%, 95% 90%, 85% 95%, 75% 92%, 65% 96%, 55% 94%, 45% 98%, 35% 93%, 25% 97%, 15% 92%, 5% 95%, 0% 85%
-    );
   }
   
   &.cbd,
   &.medical {
     background: ${theme.colors.dark};
-    clip-path: polygon(
-      0% 15%, 5% 5%, 15% 8%, 25% 3%, 35% 7%, 45% 2%, 55% 6%, 65% 4%, 75% 8%, 85% 5%, 95% 10%, 100% 15%,
-      100% 85%, 95% 90%, 85% 95%, 75% 92%, 65% 96%, 55% 94%, 45% 98%, 35% 93%, 25% 97%, 15% 92%, 5% 95%, 0% 85%
-    );
   }
 `
 

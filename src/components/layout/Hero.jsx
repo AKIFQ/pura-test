@@ -74,53 +74,51 @@ const HeroContent = styled.div`
 `
 
 const Title = styled.h1`
-  margin-bottom: 40px;
-  font-size: 48px;
-  line-height: 1.1;
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 1.2;
   font-weight: 800;
   color: ${theme.colors.dark};
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-family: 'Helvetica Neue', 'Arial Black', sans-serif;
-  text-shadow: none;
   
   @media (min-width: ${theme.breakpoints.tablet}) {
-    font-size: 64px;
-    margin-bottom: 50px;
+    font-size: 42px;
+    margin-bottom: 28px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    font-size: 80px;
-    margin-bottom: 60px;
+    font-size: 52px;
+    margin-bottom: 32px;
   }
 
   span {
     color: ${theme.colors.primaryDark};
     font-weight: 800;
     display: block;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 `
 
 const Description = styled.p`
   color: ${theme.colors.text.secondary};
-  margin-bottom: 50px;
+  margin-bottom: 32px;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.6;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
   max-width: 600px;
-  text-shadow: none;
 
   @media (min-width: ${theme.breakpoints.tablet}) {
-    margin-bottom: 60px;
-    font-size: 18px;
+    margin-bottom: 40px;
+    font-size: 17px;
     max-width: 650px;
   }
 
   @media (min-width: ${theme.breakpoints.desktop}) {
-    margin-bottom: 70px;
-    font-size: 20px;
+    margin-bottom: 48px;
+    font-size: 18px;
     max-width: 700px;
   }
 `
